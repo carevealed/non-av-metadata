@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+  targetNamespace="http://calpreservation.org/projects/audiovisual-preservation/dcscheme.html"
+  xmlns="http://calpreservation.org/projects/audiovisual-preservation/dcscheme.html">
   <xs:annotation>
     <xs:documentation xml:lang="en">This is just a test of the documentation
     </xs:documentation>
@@ -10,10 +12,10 @@
         <xs:element ref="DescriptionDocument"/>
       </xs:sequence>
       <xs:attribute name="collectionSource" use="required"/>
-      <xs:attribute name="projectSource" use="required" type="xs:NCName"/>
+      <xs:attribute name="projectSource" use="required" type="xs:string"/>
     </xs:complexType>
   </xs:element>
-  <xs:element name="DescriptionDocument">
+  <xs:element name="DescriptionDocument" block="">
     <xs:annotation>
       <xs:documentation xml:lang="en">The first part is a description of the physical object as a whole whereas the AssetParts are a reference to the digital files
       </xs:documentation>
@@ -21,6 +23,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element ref="DublinCore"/>
+        <xs:element ref="Assets"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -40,7 +43,7 @@
         <xs:element ref="type" minOccurs="1"/>
         <xs:element ref="format" minOccurs="0"/>
         <xs:element ref="identifier" maxOccurs="unbounded" minOccurs="0"/>
-        <xs:element ref="source"/>
+        <xs:element ref="source" maxOccurs="unbounded"/>
         <xs:element ref="language" maxOccurs="unbounded" minOccurs="0"/>
         <xs:element ref="relation" maxOccurs="1" minOccurs="0"/>
         <xs:element ref="coverage" maxOccurs="unbounded" minOccurs="0"/>
@@ -48,62 +51,164 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="title" type="xs:string"/>
-  <xs:element name="creator">
-    <xs:complexType/>
-  </xs:element>
-  <xs:element name="subject" type="xs:string"/>
-  <xs:element name="description" type="xs:string"/>
-  <xs:element name="publisher" type="xs:anyType"> </xs:element>
-  <xs:element name="contributor" type="xs:anyType"> </xs:element>
-  <xs:element name="date" type="xs:anyType"/>
-  <xs:element name="type" type="xs:string"/>
-  <xs:element name="format" type="xs:NCName"/>
-  <xs:element name="identifier" type="xs:string"/>
-  <xs:element name="source" type="xs:string"/>
-  <xs:element name="language" type="xs:NCName"/>
-  <xs:element name="relation" type="xs:anyType"> </xs:element>
-  <xs:element name="coverage">
-    <xs:complexType mixed="true">
-      <xs:attribute name="type" use="required" type="xs:NCName"/>
+  <xs:element name="title">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute name="type" type="xs:string"/>
+        </xs:extension>
+      </xs:simpleContent>
     </xs:complexType>
   </xs:element>
-  <xs:element name="rights" type="xs:string"/>
+  <xs:element name="creator">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute name="type" type="xs:string"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="subject">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute name="type" type="xs:string"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="description">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute name="type" type="xs:string"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="publisher">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute name="type" type="xs:string"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="contributor">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="xs:anyType">
+          <xs:attribute name="type" type="xs:string"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="date">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="xs:anyType">
+          <xs:attribute name="type" type="xs:string"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="type">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute name="type" type="xs:string"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="format">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute name="type" type="xs:string"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="identifier">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute name="type" type="xs:string"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="source">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute name="url" type="xs:string"/>
+          <xs:attribute name="type" type="xs:string"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="language">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute name="type" type="xs:string"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="relation">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute name="type" type="xs:string"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="coverage">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute name="type" type="xs:string"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="rights">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute name="type" type="xs:string"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="Assets">
     <xs:complexType>
       <xs:sequence>
         <xs:element ref="objectID"/>
         <xs:element ref="projectID"/>
         <xs:element ref="physicalLocation"/>
-        <xs:element ref="dimensionsHeight" maxOccurs="1" minOccurs="0">
-          <xs:annotation>
-            <xs:documentation xml:lang="en">This measures the height dimension of the physical object in inches. Use "inches" as the unit.</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element ref="dimensionsWidth" minOccurs="0">
-          <xs:annotation>
-            <xs:documentation>This measures the width dimension of the physical object in inches. Use "inches" as the unit.</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element ref="color" minOccurs="0">
-          <xs:annotation>
-            <xs:appinfo>info</xs:appinfo>
-            <xs:documentation xml:lang="eng">The color element describes the content as a whole. Most common answers will be B&amp;W or Color.</xs:documentation>
-          </xs:annotation>
-        </xs:element>
+        <xs:element ref="dimensionsHeight"/>
+        <xs:element ref="dimensionsWidth"/>
+        <xs:element ref="color"/>
         <xs:element ref="hasParts"/>
-        <xs:element ref="additionalDescription" minOccurs="0"/>
+        <xs:element ref="additionalDescription"/>
         <xs:element ref="AssetPart"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="objectID" type="xs:NCName"/>
-  <xs:element name="projectID" type="xs:NCName"/>
+  <xs:element name="objectID" type="xs:string"/>
+  <xs:element name="projectID" type="xs:string"/>
   <xs:element name="physicalLocation" type="xs:string"/>
   <xs:element name="dimensionsHeight">
     <xs:complexType>
       <xs:simpleContent>
-        <xs:extension base="xs:integer">
+        <xs:extension base="xs:negativeInteger">
           <xs:attribute name="unit" use="required" type="xs:NCName"/>
         </xs:extension>
       </xs:simpleContent>
@@ -112,17 +217,15 @@
   <xs:element name="dimensionsWidth">
     <xs:complexType>
       <xs:simpleContent>
-        <xs:extension base="xs:integer">
+        <xs:extension base="xs:negativeInteger">
           <xs:attribute name="unit" use="required" type="xs:NCName"/>
         </xs:extension>
       </xs:simpleContent>
     </xs:complexType>
   </xs:element>
-  <xs:element name="color" type="xs:NCName"/>
+  <xs:element name="color" type="xs:string"/>
   <xs:element name="hasParts" type="xs:string"/>
-  <xs:element name="additionalDescription">
-    <xs:complexType/>
-  </xs:element>
+  <xs:element name="additionalDescription" type="xs:string"> </xs:element>
   <xs:element name="AssetPart">
     <xs:complexType>
       <xs:sequence>
@@ -147,22 +250,26 @@
         <xs:element minOccurs="0" ref="relationship"/>
         <xs:element ref="Technical"/>
       </xs:sequence>
-      <xs:attribute name="type" use="required" type="xs:NCName"/>
+      <xs:attribute name="generation" use="required" type="xs:string"/>
     </xs:complexType>
   </xs:element>
-  <xs:element name="fileName" type="xs:NCName"/>
+  <xs:element name="fileName" type="xs:string"/>
   <xs:element name="fileSize">
     <xs:complexType>
       <xs:simpleContent>
         <xs:extension base="xs:decimal">
-          <xs:attribute name="unit" use="required" type="xs:NCName"/>
+          <xs:attribute name="unit" use="required" type="xs:string"/>
         </xs:extension>
       </xs:simpleContent>
     </xs:complexType>
   </xs:element>
   <xs:element name="checksum">
-    <xs:complexType mixed="true">
-      <xs:attribute name="type" use="required" type="xs:NCName"/>
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute name="type" type="xs:string"/>
+        </xs:extension>
+      </xs:simpleContent>
     </xs:complexType>
   </xs:element>
   <xs:element name="derivedFrom" type="xs:string"/>
@@ -182,13 +289,13 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="fileFormat" type="xs:NCName"/>
-  <xs:element name="imageFormat" type="xs:NCName"/>
+  <xs:element name="fileFormat" type="xs:string"/>
+  <xs:element name="imageFormat" type="xs:string"/>
   <xs:element name="resolutionWidth">
     <xs:complexType>
       <xs:simpleContent>
         <xs:extension base="xs:integer">
-          <xs:attribute name="unit" use="required" type="xs:NCName"/>
+          <xs:attribute name="unit" use="required" type="xs:string"/>
         </xs:extension>
       </xs:simpleContent>
     </xs:complexType>
@@ -197,12 +304,18 @@
     <xs:complexType>
       <xs:simpleContent>
         <xs:extension base="xs:integer">
-          <xs:attribute name="unit" use="required" type="xs:NCName"/>
+          <xs:attribute name="unit" use="required" type="xs:string"/>
         </xs:extension>
       </xs:simpleContent>
     </xs:complexType>
   </xs:element>
-  <xs:element name="colorSpace"> </xs:element>
+  <xs:element name="colorSpace">
+    <xs:simpleType>
+      <xs:restriction base="xs:string">
+        <xs:pattern value=""/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
   <xs:element name="chromaSubsampling">
     <xs:simpleType>
       <xs:restriction base="xs:NMTOKEN">
@@ -214,11 +327,11 @@
     <xs:complexType>
       <xs:simpleContent>
         <xs:extension base="xs:integer">
-          <xs:attribute name="unit" use="required" type="xs:NCName"/>
+          <xs:attribute name="unit" use="required" type="xs:string"/>
         </xs:extension>
       </xs:simpleContent>
     </xs:complexType>
   </xs:element>
-  <xs:element name="compressionMode" type="xs:NCName"/>
-  <xs:element name="additionalTechnicalNotes" type="xs:NCName"/>
+  <xs:element name="compressionMode" type="xs:string"/>
+  <xs:element name="additionalTechnicalNotes" type="xs:string"/>
 </xs:schema>
