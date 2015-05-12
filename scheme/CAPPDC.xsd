@@ -294,7 +294,7 @@
   <xs:element name="resolutionWidth">
     <xs:complexType>
       <xs:simpleContent>
-        <xs:extension base="xs:integer">
+        <xs:extension base="xs:nonNegativeInteger">
           <xs:attribute name="unit" use="required" type="xs:string"/>
         </xs:extension>
       </xs:simpleContent>
@@ -303,7 +303,7 @@
   <xs:element name="resolutionHeight">
     <xs:complexType>
       <xs:simpleContent>
-        <xs:extension base="xs:integer">
+        <xs:extension base="xs:nonNegativeInteger">
           <xs:attribute name="unit" use="required" type="xs:string"/>
         </xs:extension>
       </xs:simpleContent>
@@ -326,12 +326,21 @@
   <xs:element name="colorDepth">
     <xs:complexType>
       <xs:simpleContent>
-        <xs:extension base="xs:integer">
+        <xs:extension base="xs:nonNegativeInteger">
           <xs:attribute name="unit" use="required" type="xs:string"/>
         </xs:extension>
       </xs:simpleContent>
     </xs:complexType>
   </xs:element>
-  <xs:element name="compressionMode" type="xs:string"/>
+  <xs:element name="compressionMode">
+    <xs:simpleType>
+      <xs:restriction base="xs:string">
+        <xs:enumeration value="Lossless"/>
+        <xs:enumeration value="Lossy"/>
+        <xs:enumeration value="Uncompressed"/>
+        <xs:enumeration value="Unknown"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
   <xs:element name="additionalTechnicalNotes" type="xs:string"/>
 </xs:schema>
