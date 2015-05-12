@@ -208,7 +208,7 @@
   <xs:element name="dimensionsHeight">
     <xs:complexType>
       <xs:simpleContent>
-        <xs:extension base="xs:negativeInteger">
+        <xs:extension base="xs:nonNegativeInteger">
           <xs:attribute name="unit" use="required" type="xs:NCName"/>
         </xs:extension>
       </xs:simpleContent>
@@ -217,7 +217,7 @@
   <xs:element name="dimensionsWidth">
     <xs:complexType>
       <xs:simpleContent>
-        <xs:extension base="xs:negativeInteger">
+        <xs:extension base="xs:nonNegativeInteger">
           <xs:attribute name="unit" use="required" type="xs:NCName"/>
         </xs:extension>
       </xs:simpleContent>
