@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:documentation xml:lang="en">This is just a test of the documentation
+    </xs:documentation>
+  </xs:annotation>
+  <xs:element name="CollectionReference">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="DescriptionDocument"/>
+      </xs:sequence>
+      <xs:attribute name="collectionSource" use="required"/>
+      <xs:attribute name="projectSource" use="required" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DescriptionDocument">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">The first part is a description of the physical object as a whole whereas the AssetParts are a reference to the digital files
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="DublinCore"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DublinCore">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">General Dublin Core information describing the content as a whole.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="title" maxOccurs="unbounded"/>
+        <xs:element ref="creator" maxOccurs="unbounded" minOccurs="0"/>
+        <xs:element ref="subject" maxOccurs="unbounded" minOccurs="0"/>
+        <xs:element ref="description" minOccurs="0"/>
+        <xs:element ref="publisher" maxOccurs="unbounded" minOccurs="0"/>
+        <xs:element ref="contributor" maxOccurs="unbounded" minOccurs="0"/>
+        <xs:element ref="date" maxOccurs="unbounded" minOccurs="0"/>
+        <xs:element ref="type" minOccurs="1"/>
+        <xs:element ref="format" minOccurs="0"/>
+        <xs:element ref="identifier" maxOccurs="unbounded" minOccurs="0"/>
+        <xs:element ref="source"/>
+        <xs:element ref="language" maxOccurs="unbounded" minOccurs="0"/>
+        <xs:element ref="relation" maxOccurs="1" minOccurs="0"/>
+        <xs:element ref="coverage" maxOccurs="unbounded" minOccurs="0"/>
+        <xs:element ref="rights"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="title" type="xs:string"/>
+  <xs:element name="creator">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="subject" type="xs:string"/>
+  <xs:element name="description" type="xs:string"/>
+  <xs:element name="publisher" type="xs:anyType"> </xs:element>
+  <xs:element name="contributor" type="xs:anyType"> </xs:element>
+  <xs:element name="date" type="xs:anyType"/>
+  <xs:element name="type" type="xs:string"/>
+  <xs:element name="format" type="xs:NCName"/>
+  <xs:element name="identifier" type="xs:string"/>
+  <xs:element name="source" type="xs:string"/>
+  <xs:element name="language" type="xs:NCName"/>
+  <xs:element name="relation" type="xs:anyType"> </xs:element>
+  <xs:element name="coverage">
+    <xs:complexType mixed="true">
+      <xs:attribute name="type" use="required" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="rights" type="xs:string"/>
+  <xs:element name="Assets">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="objectID"/>
+        <xs:element ref="projectID"/>
+        <xs:element ref="physicalLocation"/>
+        <xs:element ref="dimensionsHeight" maxOccurs="1" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation xml:lang="en">This measures the height dimension of the physical object in inches. Use "inches" as the unit.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element ref="dimensionsWidth" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation>This measures the width dimension of the physical object in inches. Use "inches" as the unit.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element ref="color" minOccurs="0">
+          <xs:annotation>
+            <xs:appinfo>info</xs:appinfo>
+            <xs:documentation xml:lang="eng">The color element describes the content as a whole. Most common answers will be B&amp;W or Color.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element ref="hasParts"/>
+        <xs:element ref="additionalDescription" minOccurs="0"/>
+        <xs:element ref="AssetPart"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="objectID" type="xs:NCName"/>
+  <xs:element name="projectID" type="xs:NCName"/>
+  <xs:element name="physicalLocation" type="xs:string"/>
+  <xs:element name="dimensionsHeight">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:integer">
+          <xs:attribute name="unit" use="required" type="xs:NCName"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="dimensionsWidth">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:integer">
+          <xs:attribute name="unit" use="required" type="xs:NCName"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="color" type="xs:NCName"/>
+  <xs:element name="hasParts" type="xs:string"/>
+  <xs:element name="additionalDescription">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="AssetPart">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="Instantiations" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Instantiations">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="Instantiation"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Instantiation">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="fileName"/>
+        <xs:element ref="fileSize"/>
+        <xs:element ref="checksum"/>
+        <xs:element ref="derivedFrom"/>
+        <xs:element minOccurs="0" ref="relationship"/>
+        <xs:element ref="Technical"/>
+      </xs:sequence>
+      <xs:attribute name="type" use="required" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="fileName" type="xs:NCName"/>
+  <xs:element name="fileSize">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:decimal">
+          <xs:attribute name="unit" use="required" type="xs:NCName"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="checksum">
+    <xs:complexType mixed="true">
+      <xs:attribute name="type" use="required" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="derivedFrom" type="xs:string"/>
+  <xs:element name="relationship" type="xs:string"/>
+  <xs:element name="Technical">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="fileFormat"/>
+        <xs:element ref="imageFormat"/>
+        <xs:element ref="resolutionWidth"/>
+        <xs:element ref="resolutionHeight"/>
+        <xs:element ref="colorSpace" minOccurs="1"/>
+        <xs:element ref="chromaSubsampling" minOccurs="0"/>
+        <xs:element ref="colorDepth"/>
+        <xs:element ref="compressionMode"/>
+        <xs:element ref="additionalTechnicalNotes" minOccurs="0"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="fileFormat" type="xs:NCName"/>
+  <xs:element name="imageFormat" type="xs:NCName"/>
+  <xs:element name="resolutionWidth">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:integer">
+          <xs:attribute name="unit" use="required" type="xs:NCName"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="resolutionHeight">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:integer">
+          <xs:attribute name="unit" use="required" type="xs:NCName"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="colorSpace"> </xs:element>
+  <xs:element name="chromaSubsampling">
+    <xs:simpleType>
+      <xs:restriction base="xs:NMTOKEN">
+        <xs:pattern value="[0-9]:[0-9]:[0-9]"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="colorDepth">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:integer">
+          <xs:attribute name="unit" use="required" type="xs:NCName"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="compressionMode" type="xs:NCName"/>
+  <xs:element name="additionalTechnicalNotes" type="xs:NCName"/>
+</xs:schema>
