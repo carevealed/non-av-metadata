@@ -17,7 +17,7 @@
   </xs:element>
   <xs:element name="DescriptionDocument" block="">
     <xs:annotation>
-      <xs:documentation xml:lang="en">The first part is a description of the physical object as a whole whereas the AssetParts are a reference to the digital files
+      <xs:documentation xml:lang="en">The first part is a description of the physical object as a whole, whereas the AssetParts are a reference to the digital files.
       </xs:documentation>
     </xs:annotation>
     <xs:complexType>
@@ -33,21 +33,109 @@
     </xs:annotation>
     <xs:complexType>
       <xs:sequence>
-        <xs:element ref="title" maxOccurs="unbounded"/>
-        <xs:element ref="creator" maxOccurs="unbounded" minOccurs="0"/>
-        <xs:element ref="subject" maxOccurs="unbounded" minOccurs="0"/>
-        <xs:element ref="description" minOccurs="0"/>
-        <xs:element ref="publisher" maxOccurs="unbounded" minOccurs="0"/>
-        <xs:element ref="contributor" maxOccurs="unbounded" minOccurs="0"/>
-        <xs:element ref="date" maxOccurs="unbounded" minOccurs="0"/>
-        <xs:element ref="type" minOccurs="1"/>
-        <xs:element ref="format" minOccurs="0"/>
-        <xs:element ref="identifier" maxOccurs="unbounded" minOccurs="0"/>
-        <xs:element ref="source" maxOccurs="unbounded"/>
-        <xs:element ref="language" maxOccurs="unbounded" minOccurs="0"/>
-        <xs:element ref="relation" maxOccurs="1" minOccurs="0"/>
-        <xs:element ref="coverage" maxOccurs="unbounded" minOccurs="0"/>
-        <xs:element ref="rights"/>
+        <xs:element ref="title" maxOccurs="unbounded">
+          <xs:annotation>
+            <xs:documentation>Main or supplied title of the object.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element ref="creator" maxOccurs="unbounded" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation>Person(s) or organizations primarily responsible for creating an object. The creator may be considered an author and may be one or more people, a business, organization, group, project or service. Format: Last Name, First Name. Separate multiple names with a semicolon. Please use controlled vocabulary if applicable.
+
+Vocabulary: Library of Congress Name Authority File http://authorities.loc.gov/</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element ref="subject" maxOccurs="unbounded" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation>Separate multiple subjects with a semicolon. Please use controlled vocabulary if applicable. Vocabulary: Library of Congress Subject Headings http://authorities.loc.gov/</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element ref="description" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation>Description or content summary.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element ref="publisher" maxOccurs="unbounded" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation>Person or organization primarily responsible for distributing or making an object available to others. Publisher may be a person, a business, organization, group, project or service. Format: Last Name, First Name. Separate multiple names with a semicolon. Please use controlled vocabulary if applicable. Vocabulary: Library of Congress Name Authority File http://authorities.loc.gov/
+</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element ref="contributor" maxOccurs="unbounded" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation>Person(s) or organizations responsible for contributing to an object. Format: Last Name, First Name. Separate multiple names with a semicolon. Please use controlled vocabulary if applicable. Vocabulary: Library of Congress Name Authority File http://authorities.loc.gov/
+</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element ref="date" maxOccurs="unbounded" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation>Date created. Enter YYYY-MM-DD. If unknown, enter "Unknown."</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element ref="type" minOccurs="1">
+          <xs:annotation>
+            <xs:documentation>Please use controlled Vocabulary: Moving Image; Sound; Text; Still Image.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element ref="format" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation>Non A/V controlled vocabulary: Book; Broadside (notice); Drawing (visual work); Engraving (print); Lithograph; Manuscript (document genre); Map (document); Newspaper; Photograph.
+See controlled vocabulary for A/V: http://metadataregistry.org/concept/list/vocabulary_id/145.html</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element ref="identifier" maxOccurs="unbounded" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation>To be supplied by CAPS.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element ref="source" maxOccurs="unbounded">
+          <xs:annotation>
+            <xs:documentation>Name of owning institution.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element ref="language" maxOccurs="unbounded" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation>If English, enter “eng.” Please use controlled vocabulary. Vocabulary: ISO 639.2 Codes for Names of Languages http://www.loc.gov/standards/iso639-2/php/code_list.php</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element ref="relation" maxOccurs="1" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation>List related Title(s) or Identifier(s) if object shares an intellectual bond with another object or belongs in a series. </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element ref="coverage" maxOccurs="unbounded" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation>Identifies a span of space that is expressed by the intellectual content of a media item. Please use controlled vocabulary, if applicable. Vocabulary: Library of Congress Subject Headings: http://authorities.loc.gov/</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element ref="rights">
+          <xs:annotation>
+            <xs:documentation>Three boilerplate statements are supplied — amend the statements as needed:
+
+1) Public domain. No restrictions on use.
+
+2) Copyrighted. Rights are owned by [Library/Archive or Copyright Holder]. Copyright
+Holder has given Institution permission to provide access to the digitized work online.
+Transmission or reproduction of materials protected by copyright beyond that allowed
+by fair use requires the written permission of the copyright owner. In addition, the
+reproduction of some materials may be restricted by terms of gift or purchase
+agreements, donor restrictions, privacy and publicity rights, licensing and trademarks.
+Works not in the public domain cannot be commercially exploited without permission of
+the copyright owner. Responsibility for any use rests exclusively with the user.
+
+3) Copyright status unknown. This work may be protected by the U.S. Copyright Law (Title
+17, U.S.C.). In addition, its reproduction may be restricted by terms of gift or purchase
+agreements, donor restrictions, privacy and publicity rights, licensing and trademarks.
+This work is accessible for purposes of education and research. Transmission or
+reproduction of works protected by copyright beyond that allowed by fair use requires
+the written permission of the copyright owners. Works not in the public domain cannot
+be commercially exploited without permission of the copyright owner. Responsibility for
+any use rests exclusively with the user. [Library/Archive] attempted to find rights owners
+without success but is eager to hear from them so that we may obtain permission, if
+needed. Upon request to[email at Library/Archive], digitized works can be removed
+from public view if there are rights issues that need to be resolved</xs:documentation>
+          </xs:annotation>
+        </xs:element>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
