@@ -2,115 +2,120 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
   targetNamespace="http://calpreservation.org/projects/audiovisual-preservation/dcscheme.html"
   xmlns="http://calpreservation.org/projects/audiovisual-preservation/dcscheme.html">
-  <xs:annotation>
-    <xs:documentation xml:lang="en">This is just a test of the documentation
-    </xs:documentation>
-  </xs:annotation>
   <xs:element name="CollectionReference">
     <xs:complexType>
       <xs:sequence>
-        <xs:element ref="DescriptionDocument"/>
-      </xs:sequence>
-      <xs:attribute name="collectionSource" use="required"/>
-      <xs:attribute name="projectSource" use="required" type="xs:string"/>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="DescriptionDocument" block="">
-    <xs:annotation>
-      <xs:documentation xml:lang="en">The first part is a description of the physical object as a whole, whereas the AssetParts are a reference to the digital files.
-      </xs:documentation>
-    </xs:annotation>
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element ref="DublinCore"/>
-        <xs:element ref="Assets"/>
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="DublinCore">
-    <xs:annotation>
-      <xs:documentation xml:lang="en">General Dublin Core information describing the content as a whole.</xs:documentation>
-    </xs:annotation>
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element ref="title" maxOccurs="unbounded">
-          <xs:annotation>
-            <xs:documentation>Main or supplied title of the object.</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element ref="creator" maxOccurs="unbounded" minOccurs="0">
-          <xs:annotation>
-            <xs:documentation>Person(s) or organizations primarily responsible for creating an object. The creator may be considered an author and may be one or more people, a business, organization, group, project or service. Format: Last Name, First Name. Separate multiple names with a semicolon. Please use controlled vocabulary if applicable.
+        <xs:element name="DescriptionDocument">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="DublinCore">
+                <xs:annotation>
+                  <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Represents the content of the item.</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="title" maxOccurs="unbounded" type="xs:string">
+                      <xs:annotation>
+                        <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Main or supplied title of the object.</xs:documentation>
+                      </xs:annotation>
+                    </xs:element>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="creator" type="xs:string">
+                      <xs:annotation>
+                        <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Person(s) or organizations primarily responsible for creating an object. The creator may be considered an author and may be one or more people, a business, organization, group, project or service. Format: Last Name, First Name. Separate multiple names with a semicolon. Please use controlled vocabulary if applicable.
 
 Vocabulary: Library of Congress Name Authority File http://authorities.loc.gov/</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element ref="subject" maxOccurs="unbounded" minOccurs="0">
-          <xs:annotation>
-            <xs:documentation>Separate multiple subjects with a semicolon. Please use controlled vocabulary if applicable. Vocabulary: Library of Congress Subject Headings http://authorities.loc.gov/</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element ref="description" minOccurs="0">
-          <xs:annotation>
-            <xs:documentation>Description or content summary.</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element ref="publisher" maxOccurs="unbounded" minOccurs="0">
-          <xs:annotation>
-            <xs:documentation>Person or organization primarily responsible for distributing or making an object available to others. Publisher may be a person, a business, organization, group, project or service. Format: Last Name, First Name. Separate multiple names with a semicolon. Please use controlled vocabulary if applicable. Vocabulary: Library of Congress Name Authority File http://authorities.loc.gov/
+                      </xs:annotation>
+                    </xs:element>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="subject" type="xs:string">
+                      <xs:annotation>
+                        <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Separate multiple subjects with a semicolon. Please use controlled vocabulary if applicable. Vocabulary: Library of Congress Subject Headings http://authorities.loc.gov/</xs:documentation>
+                      </xs:annotation>
+                    </xs:element>
+                    <xs:element minOccurs="0" name="description" type="xs:string">
+                      <xs:annotation>
+                        <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Description or content summary.</xs:documentation>
+                      </xs:annotation>
+                    </xs:element>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="publisher"
+                      type="xs:string">
+                      <xs:annotation>
+                        <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Person or organization primarily responsible for distributing or making an object available to others. Publisher may be a person, a business, organization, group, project or service. Format: Last Name, First Name. Separate multiple names with a semicolon. Please use controlled vocabulary if applicable. Vocabulary: Library of Congress Name Authority File http://authorities.loc.gov/
 </xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element ref="contributor" maxOccurs="unbounded" minOccurs="0">
-          <xs:annotation>
-            <xs:documentation>Person(s) or organizations responsible for contributing to an object. Format: Last Name, First Name. Separate multiple names with a semicolon. Please use controlled vocabulary if applicable. Vocabulary: Library of Congress Name Authority File http://authorities.loc.gov/
+                      </xs:annotation>
+                    </xs:element>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="contributor"
+                      type="xs:string">
+                      <xs:annotation>
+                        <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Person(s) or organizations responsible for contributing to an object. Format: Last Name, First Name. Separate multiple names with a semicolon. Please use controlled vocabulary if applicable. Vocabulary: Library of Congress Name Authority File http://authorities.loc.gov/
 </xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element ref="date" maxOccurs="unbounded" minOccurs="0">
-          <xs:annotation>
-            <xs:documentation>Date created. Enter YYYY-MM-DD. If unknown, enter "Unknown."</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element ref="type" minOccurs="1">
-          <xs:annotation>
-            <xs:documentation>Please use controlled Vocabulary: Moving Image; Sound; Text; Still Image.</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element ref="format" minOccurs="0">
-          <xs:annotation>
-            <xs:documentation>Non A/V controlled vocabulary: Book; Broadside (notice); Drawing (visual work); Engraving (print); Lithograph; Manuscript (document genre); Map (document); Newspaper; Photograph.
+                      </xs:annotation>
+                    </xs:element>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="date" type="xs:string">
+                      <xs:annotation>
+                        <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Date created. Enter YYYY-MM-DD. If unknown, enter "Unknown."</xs:documentation>
+                      </xs:annotation>
+                    </xs:element>
+                    <xs:element minOccurs="1" name="type" type="xs:string">
+                      <xs:annotation>
+                        <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Please use controlled Vocabulary: Moving Image; Sound; Text; Still Image.</xs:documentation>
+                      </xs:annotation>
+                    </xs:element>
+                    <xs:element minOccurs="0" name="format" type="xs:string">
+                      <xs:annotation>
+                        <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Non A/V controlled vocabulary: Book; Broadside (notice); Drawing (visual work); Engraving (print); Lithograph; Manuscript (document genre); Map (document); Newspaper; Photograph.
 See controlled vocabulary for A/V: http://metadataregistry.org/concept/list/vocabulary_id/145.html</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element ref="identifier" maxOccurs="unbounded" minOccurs="0">
-          <xs:annotation>
-            <xs:documentation>To be supplied by CAPS.</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element ref="source" maxOccurs="unbounded">
-          <xs:annotation>
-            <xs:documentation>Name of owning institution.</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element ref="language" maxOccurs="unbounded" minOccurs="0">
-          <xs:annotation>
-            <xs:documentation>If English, enter “eng.” Please use controlled vocabulary. Vocabulary: ISO 639.2 Codes for Names of Languages http://www.loc.gov/standards/iso639-2/php/code_list.php</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element ref="relation" maxOccurs="1" minOccurs="0">
-          <xs:annotation>
-            <xs:documentation>List related Title(s) or Identifier(s) if object shares an intellectual bond with another object or belongs in a series. </xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element ref="coverage" maxOccurs="unbounded" minOccurs="0">
-          <xs:annotation>
-            <xs:documentation>Identifies a span of space that is expressed by the intellectual content of a media item. Please use controlled vocabulary, if applicable. Vocabulary: Library of Congress Subject Headings: http://authorities.loc.gov/</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element ref="rights">
-          <xs:annotation>
-            <xs:documentation>Three boilerplate statements are supplied — amend the statements as needed:
+                      </xs:annotation>
+                    </xs:element>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="identifier"
+                      type="xs:string">
+                      <xs:annotation>
+                        <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">To be supplied by CAPS.</xs:documentation>
+                      </xs:annotation>
+                    </xs:element>
+                    <xs:element maxOccurs="unbounded" name="source">
+                      <xs:annotation>
+                        <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Name of owning institution.</xs:documentation>
+                      </xs:annotation>
+                      <xs:complexType>
+                        <xs:simpleContent>
+                          <xs:extension base="xs:string">
+                            <xs:attribute name="url">
+                              <xs:simpleType>
+                                <xs:restriction base="xs:anyURI">
+                                  <xs:pattern value="https?://.+"/>
+                                </xs:restriction>
+                              </xs:simpleType>
+                            </xs:attribute>
+                            <xs:attribute name="type" type="xs:string" use="required"/>
+                          </xs:extension>
+                        </xs:simpleContent>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="language" type="xs:string">
+                      <xs:annotation>
+                        <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">If English, enter “eng.” Please use controlled vocabulary. Vocabulary: ISO 639.2 Codes for Names of Languages http://www.loc.gov/standards/iso639-2/php/code_list.php</xs:documentation>
+                      </xs:annotation>
+                    </xs:element>
+                    <xs:element maxOccurs="1" minOccurs="0" name="relation" type="xs:string">
+                      <xs:annotation>
+                        <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">List related Title(s) or Identifier(s) if object shares an intellectual bond with another object or belongs in a series. </xs:documentation>
+                      </xs:annotation>
+                    </xs:element>
+                    <xs:element maxOccurs="unbounded" minOccurs="1" name="coverage">
+                      <xs:annotation>
+                        <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Identifies a span of space that is expressed by the intellectual content of a media item. Please use controlled vocabulary, if applicable. Vocabulary: Library of Congress Subject Headings: http://authorities.loc.gov/</xs:documentation>
+                      </xs:annotation>
+                      <xs:complexType>
+                        <xs:simpleContent>
+                          <xs:extension base="xs:string">
+                            <xs:attribute name="type" type="xs:string"/>
+                          </xs:extension>
+                        </xs:simpleContent>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="rights" type="xs:string">
+                      <xs:annotation>
+                        <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Three boilerplate statements are supplied — amend the statements as needed:
 
 1) Public domain. No restrictions on use.
 
@@ -134,301 +139,236 @@ any use rests exclusively with the user. [Library/Archive] attempted to find rig
 without success but is eager to hear from them so that we may obtain permission, if
 needed. Upon request to[email at Library/Archive], digitized works can be removed
 from public view if there are rights issues that need to be resolved</xs:documentation>
-          </xs:annotation>
+                      </xs:annotation>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="Assets">
+                <xs:annotation>
+                  <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">The Assets element allows grouping of PREMIS-like and technical metadata about the record's physical object and object's digital surrogates.</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="objectID" type="xs:string"/>
+                    <xs:element name="projectID" type="xs:string"/>
+                    <xs:element name="physicalLocation" type="xs:string"/>
+                    <xs:element name="dimensionsHeight">
+                      <xs:complexType>
+                        <xs:simpleContent>
+                          <xs:extension base="xs:decimal">
+                            <xs:attribute name="unit" type="xs:string" use="required"/>
+                          </xs:extension>
+                        </xs:simpleContent>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="dimensionsWidth">
+                      <xs:complexType>
+                        <xs:simpleContent>
+                          <xs:extension base="xs:decimal">
+                            <xs:attribute name="unit" type="xs:string" use="required"/>
+                          </xs:extension>
+                        </xs:simpleContent>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="color" type="xs:string"/>
+                    <xs:element name="hasParts" type="xs:string"/>
+                    <xs:element name="additionalDescription" type="xs:string"/>
+                    <xs:element maxOccurs="1" name="AssetPart">
+                      <xs:annotation>
+                        <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">The AssetPart element allows for grouping of the various parts in a record, allowing the representation of complex object.</xs:documentation>
+                      </xs:annotation>
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="Instantiations" maxOccurs="unbounded">
+                            <xs:annotation>
+                              <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">The Instantiations element allows for the grouping of all the instantations for a given asset.</xs:documentation>
+                            </xs:annotation>
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="Instantiation" maxOccurs="unbounded">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="fileName">
+                                        <xs:annotation>
+                                          <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Name of the digital file with the file extension.</xs:documentation>
+                                        </xs:annotation>
+                                        <xs:complexType>
+                                          <xs:simpleContent>
+                                            <xs:extension base="xs:string">
+                                              <xs:attribute name="unit">
+                                                <xs:annotation>
+                                                  <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">The unit used for the file size using the initials only. For example: MB for megabytes and b for bits.</xs:documentation>
+                                                </xs:annotation>
+                                              </xs:attribute>
+                                            </xs:extension>
+                                          </xs:simpleContent>
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element name="fileSize">
+                                        <xs:annotation>
+                                          <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">The size of the digital file as a decimal or a whole number only. Qualified by a file size unit attribute.</xs:documentation>
+                                        </xs:annotation>
+                                        <xs:complexType>
+                                          <xs:simpleContent>
+                                            <xs:extension base="xs:decimal">
+                                              <xs:attribute name="unit">
+                                                <xs:annotation>
+                                                  <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Unit should contain the full name and not an abbreviation. For example: megabytes instead of MB.</xs:documentation>
+                                                </xs:annotation>
+                                              </xs:attribute>
+                                            </xs:extension>
+                                          </xs:simpleContent>
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element name="checksum">
+                                        <xs:annotation>
+                                          <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Contains the hash value of a checksum verification algorithm. Qualified by a type attribute.</xs:documentation>
+                                        </xs:annotation>
+                                        <xs:complexType>
+                                          <xs:simpleContent>
+                                            <xs:extension base="xs:string">
+                                              <xs:attribute name="type">
+                                                <xs:annotation>
+                                                  <xs:documentation>Represents the type of checksum algorthim used.</xs:documentation>
+                                                </xs:annotation>
+                                              </xs:attribute>
+                                            </xs:extension>
+                                          </xs:simpleContent>
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element name="derivedFrom" type="xs:string">
+                                        <xs:annotation>
+                                          <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Refers to the source of instantiation. This will be designated by Physical Object for preservation masters and the file name it was derivated from for access files.</xs:documentation>
+                                        </xs:annotation>
+                                      </xs:element>
+                                      <xs:element name="Technical">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="fileFormat" type="xs:string">
+                                              <xs:annotation>
+                                                <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Specifies the MIME type of the file.</xs:documentation>
+                                              </xs:annotation>
+                                            </xs:element>
+                                            <xs:element name="imageFormat" type="xs:string"/>
+                                            <xs:element name="resolutionWidth">
+                                              <xs:annotation>
+                                                <xs:documentation source="California Preservation Service Metadata Guidelines">Specifies the x dimensions of the digital file. Qualified with a unit.</xs:documentation>
+                                              </xs:annotation>
+                                              <xs:complexType>
+                                                <xs:simpleContent>
+                                                  <xs:extension base="xs:nonNegativeInteger">
+                                                  <xs:attribute name="unit" use="required"
+                                                  type="xs:string">
+                                                  <xs:annotation>
+                                                  <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Almost always pixels.</xs:documentation>
+                                                  </xs:annotation>
+                                                  </xs:attribute>
+                                                  </xs:extension>
+                                                </xs:simpleContent>
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element name="resolutionHeight">
+                                              <xs:annotation>
+                                                <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Specifies the y dimensions of the digital file. Qualified with a unit.   </xs:documentation>
+                                              </xs:annotation>
+                                              <xs:complexType>
+                                                <xs:simpleContent>
+                                                  <xs:extension base="xs:nonNegativeInteger">
+                                                  <xs:attribute name="unit" use="required"
+                                                  type="xs:string">
+                                                  <xs:annotation>
+                                                  <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Almost always pixels.</xs:documentation>
+                                                  </xs:annotation>
+                                                  </xs:attribute>
+                                                  </xs:extension>
+                                                </xs:simpleContent>
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element minOccurs="1" name="colorSpace">
+                                              <xs:annotation>
+                                                <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Specifies the type of color space used by the digital file.</xs:documentation>
+                                              </xs:annotation>
+                                              <xs:simpleType>
+                                                <xs:restriction base="xs:string"/>
+                                              </xs:simpleType>
+                                            </xs:element>
+                                            <xs:element minOccurs="0" name="chromaSubsampling">
+                                              <xs:annotation>
+                                                <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Specifies the Chroma Subsampling as a ratio in the format integer:integer:integer. For example 4:2:2. All other formated values will be considered invalid. 
+
+In the absence of subsampling, the value of this element is 4:4:4. 
+
+</xs:documentation>
+                                              </xs:annotation>
+                                              <xs:simpleType>
+                                                <xs:restriction base="xs:NMTOKEN">
+                                                  <xs:pattern value="\d+:\d+:\d+"/>
+                                                </xs:restriction>
+                                              </xs:simpleType>
+                                            </xs:element>
+                                            <xs:element name="colorDepth">
+                                              <xs:annotation>
+                                                <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">The bit depth per channel. Qualified with a unit.</xs:documentation>
+                                              </xs:annotation>
+                                              <xs:complexType>
+                                                <xs:simpleContent>
+                                                  <xs:extension base="xs:nonNegativeInteger">
+                                                  <xs:attribute name="unit" type="xs:string"
+                                                  use="required"/>
+                                                  </xs:extension>
+                                                </xs:simpleContent>
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element name="compressionMode">
+                                              <xs:annotation>
+                                                <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Designates the type of compression. 
+
+Only values accepted are Lossless, Lossy, Uncompressed, or Unknown. All other values will be considered as invalid.</xs:documentation>
+                                              </xs:annotation>
+                                              <xs:simpleType>
+                                                <xs:restriction base="xs:string">
+                                                  <xs:enumeration value="Lossless"/>
+                                                  <xs:enumeration value="Lossy"/>
+                                                  <xs:enumeration value="Uncompressed"/>
+                                                  <xs:enumeration value="Unknown"/>
+                                                </xs:restriction>
+                                              </xs:simpleType>
+                                            </xs:element>
+                                            <xs:element minOccurs="0"
+                                              name="additionalTechnicalNotes" type="xs:string">
+                                              <xs:annotation>
+                                                <xs:documentation source="California Preservation Service Metadata Guidelines">California Preservation Service Metadata Guidelines</xs:documentation>
+                                              </xs:annotation>
+                                            </xs:element>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="generation" type="xs:string" use="required">
+                                      <xs:annotation>
+                                        <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Represents the generation and use classification of the file. 
+The most common values used will be Preservation and Access.</xs:documentation>
+                                      </xs:annotation>
+                                    </xs:attribute>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                              <xs:attribute name="relationship" use="required"/>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
         </xs:element>
       </xs:sequence>
+      <xs:attribute name="collectionSource" use="required" type="xs:string"/>
+      <xs:attribute name="projectSource" use="required" type="xs:string"/>
     </xs:complexType>
   </xs:element>
-  <xs:element name="title">
-    <xs:complexType>
-      <xs:simpleContent>
-        <xs:extension base="xs:string">
-          <xs:attribute name="type" type="xs:string"/>
-        </xs:extension>
-      </xs:simpleContent>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="creator">
-    <xs:complexType>
-      <xs:simpleContent>
-        <xs:extension base="xs:string">
-          <xs:attribute name="type" type="xs:string"/>
-        </xs:extension>
-      </xs:simpleContent>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="subject">
-    <xs:complexType>
-      <xs:simpleContent>
-        <xs:extension base="xs:string">
-          <xs:attribute name="type" type="xs:string"/>
-        </xs:extension>
-      </xs:simpleContent>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="description">
-    <xs:complexType>
-      <xs:simpleContent>
-        <xs:extension base="xs:string">
-          <xs:attribute name="type" type="xs:string"/>
-        </xs:extension>
-      </xs:simpleContent>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="publisher">
-    <xs:complexType>
-      <xs:simpleContent>
-        <xs:extension base="xs:string">
-          <xs:attribute name="type" type="xs:string"/>
-        </xs:extension>
-      </xs:simpleContent>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="contributor">
-    <xs:complexType>
-      <xs:complexContent>
-        <xs:extension base="xs:anyType">
-          <xs:attribute name="type" type="xs:string"/>
-        </xs:extension>
-      </xs:complexContent>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="date">
-    <xs:complexType>
-      <xs:complexContent>
-        <xs:extension base="xs:anyType">
-          <xs:attribute name="type" type="xs:string"/>
-        </xs:extension>
-      </xs:complexContent>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="type">
-    <xs:complexType>
-      <xs:simpleContent>
-        <xs:extension base="xs:string">
-          <xs:attribute name="type" type="xs:string"/>
-        </xs:extension>
-      </xs:simpleContent>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="format">
-    <xs:complexType>
-      <xs:simpleContent>
-        <xs:extension base="xs:string">
-          <xs:attribute name="type" type="xs:string"/>
-        </xs:extension>
-      </xs:simpleContent>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="identifier">
-    <xs:complexType>
-      <xs:simpleContent>
-        <xs:extension base="xs:string">
-          <xs:attribute name="type" type="xs:string"/>
-        </xs:extension>
-      </xs:simpleContent>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="source">
-    <xs:complexType>
-      <xs:simpleContent>
-        <xs:extension base="xs:string">
-          <xs:attribute name="url" type="xs:string"/>
-          <xs:attribute name="type" type="xs:string"/>
-        </xs:extension>
-      </xs:simpleContent>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="language">
-    <xs:complexType>
-      <xs:simpleContent>
-        <xs:extension base="xs:string">
-          <xs:attribute name="type" type="xs:string"/>
-        </xs:extension>
-      </xs:simpleContent>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="relation">
-    <xs:complexType>
-      <xs:simpleContent>
-        <xs:extension base="xs:string">
-          <xs:attribute name="type" type="xs:string"/>
-        </xs:extension>
-      </xs:simpleContent>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="coverage">
-    <xs:complexType>
-      <xs:simpleContent>
-        <xs:extension base="xs:string">
-          <xs:attribute name="type" type="xs:string"/>
-        </xs:extension>
-      </xs:simpleContent>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="rights">
-    <xs:complexType>
-      <xs:simpleContent>
-        <xs:extension base="xs:string">
-          <xs:attribute name="type" type="xs:string"/>
-        </xs:extension>
-      </xs:simpleContent>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="Assets">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element ref="objectID"/>
-        <xs:element ref="projectID"/>
-        <xs:element ref="physicalLocation"/>
-        <xs:element ref="dimensionsHeight"/>
-        <xs:element ref="dimensionsWidth"/>
-        <xs:element ref="color"/>
-        <xs:element ref="hasParts"/>
-        <xs:element ref="additionalDescription"/>
-        <xs:element ref="AssetPart"/>
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="objectID" type="xs:string"/>
-  <xs:element name="projectID" type="xs:string"/>
-  <xs:element name="physicalLocation" type="xs:string"/>
-  <xs:element name="dimensionsHeight">
-    <xs:complexType>
-      <xs:simpleContent>
-        <xs:extension base="xs:nonNegativeInteger">
-          <xs:attribute name="unit" use="required" type="xs:NCName"/>
-        </xs:extension>
-      </xs:simpleContent>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="dimensionsWidth">
-    <xs:complexType>
-      <xs:simpleContent>
-        <xs:extension base="xs:nonNegativeInteger">
-          <xs:attribute name="unit" use="required" type="xs:NCName"/>
-        </xs:extension>
-      </xs:simpleContent>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="color" type="xs:string"/>
-  <xs:element name="hasParts" type="xs:string"/>
-  <xs:element name="additionalDescription" type="xs:string"> </xs:element>
-  <xs:element name="AssetPart">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element ref="Instantiations" maxOccurs="unbounded"/>
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="Instantiations">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element maxOccurs="unbounded" ref="Instantiation"/>
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="Instantiation">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element ref="fileName"/>
-        <xs:element ref="fileSize"/>
-        <xs:element ref="checksum"/>
-        <xs:element ref="derivedFrom"/>
-        <xs:element minOccurs="0" ref="relationship"/>
-        <xs:element ref="Technical"/>
-      </xs:sequence>
-      <xs:attribute name="generation" use="required" type="xs:string"/>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="fileName" type="xs:string"/>
-  <xs:element name="fileSize">
-    <xs:complexType>
-      <xs:simpleContent>
-        <xs:extension base="xs:decimal">
-          <xs:attribute name="unit" use="required" type="xs:string"/>
-        </xs:extension>
-      </xs:simpleContent>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="checksum">
-    <xs:complexType>
-      <xs:simpleContent>
-        <xs:extension base="xs:string">
-          <xs:attribute name="type" type="xs:string"/>
-        </xs:extension>
-      </xs:simpleContent>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="derivedFrom" type="xs:string"/>
-  <xs:element name="relationship" type="xs:string"/>
-  <xs:element name="Technical">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element ref="fileFormat"/>
-        <xs:element ref="imageFormat"/>
-        <xs:element ref="resolutionWidth"/>
-        <xs:element ref="resolutionHeight"/>
-        <xs:element ref="colorSpace" minOccurs="1"/>
-        <xs:element ref="chromaSubsampling" minOccurs="0"/>
-        <xs:element ref="colorDepth"/>
-        <xs:element ref="compressionMode"/>
-        <xs:element ref="additionalTechnicalNotes" minOccurs="0"/>
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="fileFormat" type="xs:string"/>
-  <xs:element name="imageFormat" type="xs:string"/>
-  <xs:element name="resolutionWidth">
-    <xs:complexType>
-      <xs:simpleContent>
-        <xs:extension base="xs:nonNegativeInteger">
-          <xs:attribute name="unit" use="required" type="xs:string"/>
-        </xs:extension>
-      </xs:simpleContent>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="resolutionHeight">
-    <xs:complexType>
-      <xs:simpleContent>
-        <xs:extension base="xs:nonNegativeInteger">
-          <xs:attribute name="unit" use="required" type="xs:string"/>
-        </xs:extension>
-      </xs:simpleContent>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="colorSpace">
-    <xs:simpleType>
-      <xs:restriction base="xs:string">
-        <xs:pattern value=""/>
-      </xs:restriction>
-    </xs:simpleType>
-  </xs:element>
-  <xs:element name="chromaSubsampling">
-    <xs:simpleType>
-      <xs:restriction base="xs:NMTOKEN">
-        <xs:pattern value="[0-9]:[0-9]:[0-9]"/>
-      </xs:restriction>
-    </xs:simpleType>
-  </xs:element>
-  <xs:element name="colorDepth">
-    <xs:complexType>
-      <xs:simpleContent>
-        <xs:extension base="xs:nonNegativeInteger">
-          <xs:attribute name="unit" use="required" type="xs:string"/>
-        </xs:extension>
-      </xs:simpleContent>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="compressionMode">
-    <xs:simpleType>
-      <xs:restriction base="xs:string">
-        <xs:enumeration value="Lossless"/>
-        <xs:enumeration value="Lossy"/>
-        <xs:enumeration value="Uncompressed"/>
-        <xs:enumeration value="Unknown"/>
-      </xs:restriction>
-    </xs:simpleType>
-  </xs:element>
-  <xs:element name="additionalTechnicalNotes" type="xs:string"/>
 </xs:schema>
