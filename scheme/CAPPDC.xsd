@@ -6,11 +6,14 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element name="DescriptionDocument">
+          <xs:annotation>
+            <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">The DescriptionDocument element allows grouping of the Dublin Core metadata and the metadata about the assets being represented.</xs:documentation>
+          </xs:annotation>
           <xs:complexType>
             <xs:sequence>
               <xs:element name="DublinCore">
                 <xs:annotation>
-                  <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Represents the content of the item.</xs:documentation>
+                  <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">The DublinCore element wraps the elements found in the generic Dublin Core scheme and represents the represents the content of the item.</xs:documentation>
                 </xs:annotation>
                 <xs:complexType>
                   <xs:sequence>
