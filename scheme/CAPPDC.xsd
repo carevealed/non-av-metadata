@@ -28,7 +28,7 @@ Vocabulary: Library of Congress Name Authority File http://authorities.loc.gov/<
                     </xs:element>
                     <xs:element maxOccurs="unbounded" minOccurs="0" name="subject" type="xs:string">
                       <xs:annotation>
-                        <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Separate multiple subjects with a semicolon. Please use controlled vocabulary if applicable. Vocabulary: Library of Congress Subject Headings http://authorities.loc.gov/</xs:documentation>
+                        <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Separate multiple subjects. Please use controlled vocabulary if applicable. Vocabulary: Library of Congress Subject Headings http://authorities.loc.gov/</xs:documentation>
                       </xs:annotation>
                     </xs:element>
                     <xs:element minOccurs="0" name="description" type="xs:string">
@@ -69,7 +69,7 @@ See controlled vocabulary for A/V: http://metadataregistry.org/concept/list/voca
                     <xs:element maxOccurs="unbounded" minOccurs="0" name="identifier"
                       type="xs:string">
                       <xs:annotation>
-                        <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">To be supplied by CAPS.</xs:documentation>
+                        <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">To be supplied by the California Preservation Service. </xs:documentation>
                       </xs:annotation>
                     </xs:element>
                     <xs:element maxOccurs="unbounded" name="source">
@@ -150,30 +150,72 @@ from public view if there are rights issues that need to be resolved</xs:documen
                 </xs:annotation>
                 <xs:complexType>
                   <xs:sequence>
-                    <xs:element name="objectID" type="xs:string"/>
-                    <xs:element name="projectID" type="xs:string"/>
-                    <xs:element name="physicalLocation" type="xs:string"/>
-                    <xs:element name="dimensionsHeight">
+                    <xs:element name="objectID" type="xs:string">
+                      <xs:annotation>
+                        <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Unique identifier to be supplied by the California Preservation Service. </xs:documentation>
+                      </xs:annotation>
+                    </xs:element>
+                    <xs:element name="projectID" type="xs:string">
+                      <xs:annotation>
+                        <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Project identifier be supplied by the California Preservation Service.</xs:documentation>
+                      </xs:annotation>
+                    </xs:element>
+                    <xs:element name="physicalLocation" type="xs:string">
+                      <xs:annotation>
+                        <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Name of owning institution. </xs:documentation>
+                      </xs:annotation>
+                    </xs:element>
+                    <xs:element name="dimensionsHeight" minOccurs="0">
+                      <xs:annotation>
+                        <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">The DimensionsHeight element describes the height of the physical object which is qualified by a unit attribute.</xs:documentation>
+                      </xs:annotation>
                       <xs:complexType>
                         <xs:simpleContent>
                           <xs:extension base="xs:decimal">
-                            <xs:attribute name="unit" type="xs:string" use="required"/>
+                            <xs:attribute name="unit" type="xs:string" use="required">
+                              <xs:annotation>
+                                <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Represent the unit used to measure the physical item. Should be a physical unit and words spelled out instead of using abbreviations. 
+
+For example: inches and centimeters.</xs:documentation>
+                              </xs:annotation>
+                            </xs:attribute>
                           </xs:extension>
                         </xs:simpleContent>
                       </xs:complexType>
                     </xs:element>
-                    <xs:element name="dimensionsWidth">
+                    <xs:element name="dimensionsWidth" minOccurs="0">
+                      <xs:annotation>
+                        <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">The DimensionsWidth element describes the width of the physical object which is qualified by a unit attribute.</xs:documentation>
+                      </xs:annotation>
                       <xs:complexType>
                         <xs:simpleContent>
                           <xs:extension base="xs:decimal">
-                            <xs:attribute name="unit" type="xs:string" use="required"/>
+                            <xs:attribute name="unit" type="xs:string" use="required">
+                              <xs:annotation>
+                                <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Represent the unit used to measure the physical item. Should be a physical unit and words spelled out instead of using abbreviations. 
+
+For example: inches and centimeters.</xs:documentation>
+                              </xs:annotation>
+                            </xs:attribute>
                           </xs:extension>
                         </xs:simpleContent>
                       </xs:complexType>
                     </xs:element>
-                    <xs:element name="color" type="xs:string"/>
-                    <xs:element name="hasParts" type="xs:string"/>
-                    <xs:element name="additionalDescription" type="xs:string"/>
+                    <xs:element name="color" type="xs:string">
+                      <xs:annotation>
+                        <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">The color element describes whether the physical object made up of content that is black and white, color, or a mixture.</xs:documentation>
+                      </xs:annotation>
+                    </xs:element>
+                    <xs:element name="hasParts" type="xs:string">
+                      <xs:annotation>
+                        <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Describes the object's total number of parts. For example, "1 page" or "3 pages of 3."</xs:documentation>
+                      </xs:annotation>
+                    </xs:element>
+                    <xs:element name="additionalDescription" type="xs:string">
+                      <xs:annotation>
+                        <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Additional descriptive notes about the object that do not fit into fields above. </xs:documentation>
+                      </xs:annotation>
+                    </xs:element>
                     <xs:element maxOccurs="1" name="AssetPart">
                       <xs:annotation>
                         <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">The AssetPart element allows for grouping of the various parts in a record, allowing the representation of complex object.</xs:documentation>
