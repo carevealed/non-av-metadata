@@ -221,7 +221,7 @@ For example: inches and centimeters.</xs:documentation>
                     </xs:element>
                     <xs:element maxOccurs="1" name="AssetPart">
                       <xs:annotation>
-                        <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">The AssetPart element allows for grouping of the various parts in a record, allowing the representation of complex object.</xs:documentation>
+                        <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">The AssetPart element allows for grouping of the various parts in a record, allowing the representation of complex object</xs:documentation>
                       </xs:annotation>
                       <xs:complexType>
                         <xs:sequence>
