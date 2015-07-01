@@ -13,7 +13,7 @@
             <xs:sequence>
               <xs:element name="DublinCore">
                 <xs:annotation>
-                  <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">The DublinCore element wraps the elements found in the generic Dublin Core scheme and represents the represents the content of the item.</xs:documentation>
+                  <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">The DublinCore element wraps the elements found in the generic Dublin Core scheme and represents the content of the object.</xs:documentation>
                 </xs:annotation>
                 <xs:complexType>
                   <xs:sequence>
@@ -24,14 +24,24 @@
                     </xs:element>
                     <xs:element maxOccurs="unbounded" minOccurs="0" name="creator" type="xs:string">
                       <xs:annotation>
-                        <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Person(s) or organizations primarily responsible for creating an object. The creator may be considered an author and may be one or more people, a business, organization, group, project or service. Format: Last Name, First Name. Separate multiple names with a semicolon. Please use controlled vocabulary if applicable.
+                        <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Person(s) or organization(s) primarily responsible for creating an object. The creator may be considered an author and may be one or more people, a business, organization, group, project or service. 
+
+Format: Last Name, First Name. 
+Please use controlled vocabulary if applicable.
+Please use one name per creator element.
+This element is a required field.
 
 Vocabulary: Library of Congress Name Authority File http://authorities.loc.gov/</xs:documentation>
                       </xs:annotation>
                     </xs:element>
                     <xs:element maxOccurs="unbounded" minOccurs="0" name="subject" type="xs:string">
                       <xs:annotation>
-                        <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Separate multiple subjects. Please use controlled vocabulary if applicable. Vocabulary: Library of Congress Subject Headings http://authorities.loc.gov/</xs:documentation>
+                        <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Please use one subject per element.
+Please use controlled vocabulary if applicable. 
+
+Vocabularies:
+Library of Congress Subject Headings: http://id.loc.gov/authorities/subjects.html
+Library of Congress Name Authority File: http://id.loc.gov/authorities/names.html</xs:documentation>
                       </xs:annotation>
                     </xs:element>
                     <xs:element minOccurs="0" name="description" type="xs:string">
@@ -42,38 +52,78 @@ Vocabulary: Library of Congress Name Authority File http://authorities.loc.gov/<
                     <xs:element maxOccurs="unbounded" minOccurs="0" name="publisher"
                       type="xs:string">
                       <xs:annotation>
-                        <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Person or organization primarily responsible for distributing or making an object available to others. Publisher may be a person, a business, organization, group, project or service. Format: Last Name, First Name. Separate multiple names with a semicolon. Please use controlled vocabulary if applicable. Vocabulary: Library of Congress Name Authority File http://authorities.loc.gov/
-</xs:documentation>
+                        <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Person(s) or organization(s) primarily responsible for distributing or making an object available to others. Publisher may be a person, a business, organization, group, project or service. 
+
+Format: Last Name, First Name. 
+Please use one name per publisher element.
+Please use controlled vocabulary if applicable. 
+Vocabulary: Library of Congress Name Authority File http://authorities.loc.gov/</xs:documentation>
                       </xs:annotation>
                     </xs:element>
                     <xs:element maxOccurs="unbounded" minOccurs="0" name="contributor"
                       type="xs:string">
                       <xs:annotation>
-                        <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Person(s) or organizations responsible for contributing to an object. Format: Last Name, First Name. Separate multiple names with a semicolon. Please use controlled vocabulary if applicable. Vocabulary: Library of Congress Name Authority File http://authorities.loc.gov/
+                        <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Person(s) or organization(s) responsible for contributing to an object. 
+
+Format: Last Name, First Name.
+Please use one name per contributor element.
+Please use controlled vocabulary if applicable. 
+
+Vocabulary: Library of Congress Name Authority File http://authorities.loc.gov/
 </xs:documentation>
                       </xs:annotation>
                     </xs:element>
-                    <xs:element maxOccurs="unbounded" minOccurs="0" name="date" type="xs:string">
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="date">
                       <xs:annotation>
-                        <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Date created. Enter YYYY-MM-DD. If unknown, enter "Unknown."</xs:documentation>
+                        <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Date related. Qualified by type attribute. 
+
+Format: YYYY-MM-DD, YYYY-MM, or YYYY
+
+If unknown, enter "Unknown."</xs:documentation>
                       </xs:annotation>
+                      <xs:complexType>
+                        <xs:simpleContent>
+                          <xs:extension base="xs:string">
+                            <xs:attribute default="created" name="type">
+                              <xs:annotation>
+                                <xs:documentation source="California Preservation Service Metadata Guidelines">Type of date. For example: "created" or "published"</xs:documentation>
+                              </xs:annotation>
+                            </xs:attribute>
+                          </xs:extension>
+                        </xs:simpleContent>
+                      </xs:complexType>
                     </xs:element>
                     <xs:element minOccurs="1" name="type" type="xs:string">
                       <xs:annotation>
-                        <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Please use controlled Vocabulary: Moving Image; Sound; Text; Still Image.</xs:documentation>
+                        <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">The nature or genre of the content of the object.
+
+Please use controlled vocabulary: Text; Still Image.</xs:documentation>
                       </xs:annotation>
                     </xs:element>
                     <xs:element minOccurs="0" name="format" type="xs:string">
                       <xs:annotation>
-                        <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Non A/V controlled vocabulary: Book; Broadside (notice); Drawing (visual work); Engraving (print); Lithograph; Manuscript (document genre); Map (document); Newspaper; Photograph.
-See controlled vocabulary for A/V: http://metadataregistry.org/concept/list/vocabulary_id/145.html</xs:documentation>
+                        <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Please use controlled vocabulary: Book; Broadside (notice); Drawing (visual work); Engraving (print); Lithograph; Manuscript (document genre); Map (document); Newspaper; Photograph.
+
+</xs:documentation>
                       </xs:annotation>
                     </xs:element>
-                    <xs:element maxOccurs="unbounded" minOccurs="0" name="identifier"
-                      type="xs:string">
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="identifier">
                       <xs:annotation>
-                        <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">To be supplied by the California Preservation Service. </xs:documentation>
+                        <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">An unambiguous reference to the resource within the institution.
+For example: Call number or barcode. 
+Qualified with the type attribute.</xs:documentation>
                       </xs:annotation>
+                      <xs:complexType>
+                        <xs:simpleContent>
+                          <xs:extension base="xs:string">
+                            <xs:attribute name="type">
+                              <xs:annotation>
+                                <xs:documentation source="California Preservation Service Metadata Guidelines">The type of the indentifier. For example "call number" or "barcode"</xs:documentation>
+                              </xs:annotation>
+                            </xs:attribute>
+                          </xs:extension>
+                        </xs:simpleContent>
+                      </xs:complexType>
                     </xs:element>
                     <xs:element maxOccurs="unbounded" name="source">
                       <xs:annotation>
@@ -96,7 +146,9 @@ See controlled vocabulary for A/V: http://metadataregistry.org/concept/list/voca
                     </xs:element>
                     <xs:element maxOccurs="unbounded" minOccurs="0" name="language" type="xs:string">
                       <xs:annotation>
-                        <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">If English, enter “eng.” Please use controlled vocabulary. Vocabulary: ISO 639.2 Codes for Names of Languages http://www.loc.gov/standards/iso639-2/php/code_list.php</xs:documentation>
+                        <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">A language of the intellectual content of the object. If English, enter “eng.” Please use controlled vocabulary. 
+
+Vocabulary: ISO 639.2 Codes for Names of Languages http://www.loc.gov/standards/iso639-2/php/code_list.php</xs:documentation>
                       </xs:annotation>
                     </xs:element>
                     <xs:element maxOccurs="1" minOccurs="0" name="relation" type="xs:string">
@@ -106,42 +158,45 @@ See controlled vocabulary for A/V: http://metadataregistry.org/concept/list/voca
                     </xs:element>
                     <xs:element maxOccurs="unbounded" minOccurs="1" name="coverage">
                       <xs:annotation>
-                        <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Identifies a span of space that is expressed by the intellectual content of a media item. Please use controlled vocabulary, if applicable. Vocabulary: Library of Congress Subject Headings: http://authorities.loc.gov/</xs:documentation>
+                        <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Identifies a span of time or space that is expressed by the intellectual content of an object. 
+
+Please use controlled vocabulary, if applicable. 
+
+Vocabulary: 
+Library of Congress Subject Headings: http://authorities.loc.gov/
+Library of Congress Extended Date/Time Format
+https://www.loc.gov/standards/datetime/pre-submission.html#datetime</xs:documentation>
                       </xs:annotation>
                       <xs:complexType>
                         <xs:simpleContent>
                           <xs:extension base="xs:string">
-                            <xs:attribute name="type" type="xs:string"/>
+                            <xs:attribute name="type" type="xs:string">
+                              <xs:annotation>
+                                <xs:documentation>The type of coverage. Please use either temporal or spacial.</xs:documentation>
+                              </xs:annotation>
+                            </xs:attribute>
                           </xs:extension>
                         </xs:simpleContent>
                       </xs:complexType>
                     </xs:element>
                     <xs:element name="rights" type="xs:string">
                       <xs:annotation>
-                        <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Three boilerplate statements are supplied — amend the statements as needed:
+                        <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Information about rights held in and over the object.
+
+Three boilerplate statements are supplied — amend the statements as needed:
 
 1) Public domain. No restrictions on use.
 
-2) Copyrighted. Rights are owned by [Library/Archive or Copyright Holder]. Copyright
-Holder has given Institution permission to provide access to the digitized work online.
-Transmission or reproduction of materials protected by copyright beyond that allowed
-by fair use requires the written permission of the copyright owner. In addition, the
-reproduction of some materials may be restricted by terms of gift or purchase
-agreements, donor restrictions, privacy and publicity rights, licensing and trademarks.
-Works not in the public domain cannot be commercially exploited without permission of
-the copyright owner. Responsibility for any use rests exclusively with the user.
+2) Copyrighted. Rights are owned by [Library/Archive or Copyright Holder]. Copyright Holder has given Institution permission to provide access to the digitized work online.
+Transmission or reproduction of materials protected by copyright beyond that allowed by fair use requires the written permission of the copyright owner. In addition, the
+reproduction of some materials may be restricted by terms of gift or purchase agreements, donor restrictions, privacy and publicity rights, licensing and trademarks.  Works not in the public domain cannot be commercially exploited without permission of the copyright owner. Responsibility for any use rests exclusively with the user.
 
-3) Copyright status unknown. This work may be protected by the U.S. Copyright Law (Title
-17, U.S.C.). In addition, its reproduction may be restricted by terms of gift or purchase
-agreements, donor restrictions, privacy and publicity rights, licensing and trademarks.
-This work is accessible for purposes of education and research. Transmission or
-reproduction of works protected by copyright beyond that allowed by fair use requires
-the written permission of the copyright owners. Works not in the public domain cannot
-be commercially exploited without permission of the copyright owner. Responsibility for
-any use rests exclusively with the user. [Library/Archive] attempted to find rights owners
-without success but is eager to hear from them so that we may obtain permission, if
-needed. Upon request to[email at Library/Archive], digitized works can be removed
-from public view if there are rights issues that need to be resolved</xs:documentation>
+3) Copyright status unknown. This work may be protected by the U.S. Copyright Law (Title 17, U.S.C.). In addition, its reproduction may be restricted by terms of gift or purchase
+agreements, donor restrictions, privacy and publicity rights, licensing and trademarks. This work is accessible for purposes of education and research. Transmission or reproduction of works protected by copyright beyond that allowed by fair use requires the written permission of the copyright owners. Works not in the public domain cannot be commercially exploited without permission of the copyright owner. Responsibility for
+any use rests exclusively with the user. [Library/Archive] attempted to find rights owners without success but is eager to hear from them so that we may obtain permission, if
+needed. Upon request to [email at Library/Archive], digitized works can be removed from public view if there are rights issues that need to be resolved.
+
+For more information, see project permission guidelines.</xs:documentation>
                       </xs:annotation>
                     </xs:element>
                   </xs:sequence>
@@ -155,7 +210,7 @@ from public view if there are rights issues that need to be resolved</xs:documen
                   <xs:sequence>
                     <xs:element name="objectID" type="xs:string">
                       <xs:annotation>
-                        <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Unique identifier to be supplied by the California Preservation Service. </xs:documentation>
+                        <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Unique object identifier to be supplied by the California Preservation Service. </xs:documentation>
                       </xs:annotation>
                     </xs:element>
                     <xs:element name="projectID" type="xs:string">
@@ -165,7 +220,7 @@ from public view if there are rights issues that need to be resolved</xs:documen
                     </xs:element>
                     <xs:element name="physicalLocation" type="xs:string">
                       <xs:annotation>
-                        <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Name of owning institution. </xs:documentation>
+                        <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Name of owning institution.</xs:documentation>
                       </xs:annotation>
                     </xs:element>
                     <xs:choice>
@@ -174,7 +229,7 @@ from public view if there are rights issues that need to be resolved</xs:documen
                           <xs:annotation>
                             <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">The DimensionsHeight element describes the height of the physical object which is qualified by a unit attribute. 
 
-If this is known, both DimensionsHeight and DimensionsWidth must be included.  </xs:documentation>
+If this is known, please include both height and width information.</xs:documentation>
                           </xs:annotation>
                           <xs:complexType>
                             <xs:simpleContent>
@@ -194,7 +249,7 @@ For example: inches and centimeters.</xs:documentation>
                           <xs:annotation>
                             <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">The DimensionsWidth element describes the width of the physical object which is qualified by a unit attribute.
 
-If this is known, both DimensionsHeight and DimensionsWidth must be included.</xs:documentation>
+If this is known, please include both height and width information.</xs:documentation>
                           </xs:annotation>
                           <xs:complexType>
                             <xs:simpleContent>
@@ -225,7 +280,7 @@ For example: inches and centimeters.</xs:documentation>
                     </xs:element>
                     <xs:element name="additionalDescription" type="xs:string">
                       <xs:annotation>
-                        <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Additional descriptive notes about the object that do not fit into fields above. </xs:documentation>
+                        <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Additional descriptive notes about the object that do not fit into elements above.</xs:documentation>
                       </xs:annotation>
                     </xs:element>
                     <xs:element maxOccurs="1" name="AssetPart">
@@ -249,13 +304,7 @@ For example: inches and centimeters.</xs:documentation>
                                         </xs:annotation>
                                         <xs:complexType>
                                           <xs:simpleContent>
-                                            <xs:extension base="xs:string">
-                                              <xs:attribute name="unit">
-                                                <xs:annotation>
-                                                  <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">The unit used for the file size using the initials only. For example: MB for megabytes and b for bits.</xs:documentation>
-                                                </xs:annotation>
-                                              </xs:attribute>
-                                            </xs:extension>
+                                            <xs:extension base="xs:string"> </xs:extension>
                                           </xs:simpleContent>
                                         </xs:complexType>
                                       </xs:element>
@@ -284,7 +333,9 @@ For example: inches and centimeters.</xs:documentation>
                                             <xs:extension base="xs:string">
                                               <xs:attribute name="type">
                                                 <xs:annotation>
-                                                  <xs:documentation>Represents the type of checksum algorthim used.</xs:documentation>
+                                                  <xs:documentation>Represents the type of checksum algorthim used.
+
+For example: MD5</xs:documentation>
                                                 </xs:annotation>
                                               </xs:attribute>
                                             </xs:extension>
@@ -293,7 +344,7 @@ For example: inches and centimeters.</xs:documentation>
                                       </xs:element>
                                       <xs:element name="derivedFrom" type="xs:string">
                                         <xs:annotation>
-                                          <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Refers to the source of instantiation. This will be designated by Physical Object for preservation masters and the file name it was derivated from for access files.</xs:documentation>
+                                          <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Refers to the source of instantiation. This will be designated by Physical Object for preservation master(s). For the access file(s), this will specify the file name it was derivated from.</xs:documentation>
                                         </xs:annotation>
                                       </xs:element>
                                       <xs:element name="Technical">
@@ -304,7 +355,13 @@ For example: inches and centimeters.</xs:documentation>
                                                 <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Specifies the MIME type of the file.</xs:documentation>
                                               </xs:annotation>
                                             </xs:element>
-                                            <xs:element name="imageFormat" type="xs:string"/>
+                                            <xs:element name="imageFormat" type="xs:string">
+                                              <xs:annotation>
+                                                <xs:documentation source="California Preservation Service Metadata Guidelines">Specifies the encoding of the digital file.
+
+For example: JPEG2000</xs:documentation>
+                                              </xs:annotation>
+                                            </xs:element>
                                             <xs:element name="resolutionWidth">
                                               <xs:annotation>
                                                 <xs:documentation source="California Preservation Service Metadata Guidelines">Specifies the x dimensions of the digital file. Qualified with a unit.</xs:documentation>
@@ -341,7 +398,9 @@ For example: inches and centimeters.</xs:documentation>
                                             </xs:element>
                                             <xs:element minOccurs="1" name="colorSpace">
                                               <xs:annotation>
-                                                <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Specifies the type of color space used by the digital file.</xs:documentation>
+                                                <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Specifies the type of color space used by the digital file.
+
+For example: YUV</xs:documentation>
                                               </xs:annotation>
                                               <xs:simpleType>
                                                 <xs:restriction base="xs:string"/>
@@ -349,10 +408,9 @@ For example: inches and centimeters.</xs:documentation>
                                             </xs:element>
                                             <xs:element minOccurs="0" name="chromaSubsampling">
                                               <xs:annotation>
-                                                <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Specifies the Chroma Subsampling as a ratio in the format integer:integer:integer. For example 4:2:2. All other formated values will be considered invalid. 
+                                                <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Specifies the Chroma Subsampling as a ratio in the format integer:integer:integer. For example 4:2:2.
 
 In the absence of subsampling, the value of this element is 4:4:4. 
-
 </xs:documentation>
                                               </xs:annotation>
                                               <xs:simpleType>
@@ -369,7 +427,11 @@ In the absence of subsampling, the value of this element is 4:4:4.
                                                 <xs:simpleContent>
                                                   <xs:extension base="xs:nonNegativeInteger">
                                                   <xs:attribute name="unit" type="xs:string"
-                                                  use="required"/>
+                                                  use="required">
+                                                  <xs:annotation>
+                                                  <xs:documentation source="California Preservation Service Metadata Guidelines">Almost always bits.</xs:documentation>
+                                                  </xs:annotation>
+                                                  </xs:attribute>
                                                   </xs:extension>
                                                 </xs:simpleContent>
                                               </xs:complexType>
@@ -378,7 +440,7 @@ In the absence of subsampling, the value of this element is 4:4:4.
                                               <xs:annotation>
                                                 <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Designates the type of compression. 
 
-Only values accepted are Lossless, Lossy, Uncompressed, or Unknown. All other values will be considered as invalid.</xs:documentation>
+Please use only Lossless, Lossy, Uncompressed, or Unknown.</xs:documentation>
                                               </xs:annotation>
                                               <xs:simpleType>
                                                 <xs:restriction base="xs:string">
@@ -392,7 +454,7 @@ Only values accepted are Lossless, Lossy, Uncompressed, or Unknown. All other va
                                             <xs:element minOccurs="0"
                                               name="additionalTechnicalNotes" type="xs:string">
                                               <xs:annotation>
-                                                <xs:documentation source="California Preservation Service Metadata Guidelines">California Preservation Service Metadata Guidelines</xs:documentation>
+                                                <xs:documentation source="California Preservation Service Metadata Guidelines">Additional techincal notes about the file that do not fit into elements above.</xs:documentation>
                                               </xs:annotation>
                                             </xs:element>
                                           </xs:sequence>
