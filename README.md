@@ -4,4 +4,4 @@ Dublin Core to include technical and PREMIS-like metadata.
 
 # Documentation
 
-[Scheme Documentation](http://cavpp.github.io/non-av-metadata/Documentation/CAVPPDC.html)
+*   [Scheme Documentation](http://cavpp.github.io/non-av-metadata/Documentation/CAVPPDC.html)
