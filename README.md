@@ -1,4 +1,4 @@
-# non-av-metdata
+# non-av-metadata
 This is the assets for working with CAVPP/CAPS metadata that is not of audiovisual content. It's extended from 
 Dublin Core to include technical and PREMIS-like metadata.
 
