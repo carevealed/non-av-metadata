@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
-  targetNamespace="http://calpreservation.org/projects/audiovisual-preservation/dcscheme.html"
-  xmlns="http://calpreservation.org/projects/audiovisual-preservation/dcscheme.html">
+  targetNamespace="http://calpreservation.org/projects/audiovisual-preservation/cavppdcscheme.html"
+  xmlns="http://calpreservation.org/projects/audiovisual-preservation/cavppdcscheme.html">
   <xs:element name="CollectionReference">
     <xs:complexType>
       <xs:sequence>

@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<CollectionReference collectionSource="California State Library" projectSource="California Preservation Service (CAPS)">
+<CollectionReference collectionSource="California State Library" projectSource="California Preservation Service (CAPS)" 
+    xmlns="http://calpreservation.org/projects/audiovisual-preservation/dcscheme.html" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:schemaLocation="http://calpreservation.org/projects/audiovisual-preservation/dcscheme.html http://calpreservation.org/projects/audiovisual-preservation/CAVPPDC.xsd">
     <DescriptionDocument>
         <DublinCore>
             <title>Shades of Anaheim - Family Portrait</title>
@@ -11,7 +14,7 @@
             <type>Still Image</type>
             <format>Photograph</format>
             <identifier>Shades of Anaheim101</identifier>
-            <source url="http://www.sample.org">Anaheim Public Library</source>
+            <source type="Owning instutution" url="http://www.sample.org">Anaheim Public Library</source>
             <source type="Internet Archive URL">http://www.archive.org/sample</source>
             <language>eng</language>
             <coverage type="Geographic">Anaheim, California</coverage>
@@ -27,13 +30,12 @@
             <hasParts>1 page</hasParts>
             <additionalDescription>6x8 in. copy of studio photo</additionalDescription>
             <AssetPart>
-                <Instantiations>
+                <Instantiations relationship="page 1">
                     <Instantiation generation="Preservation">
                         <fileName>c_00001_pres.tif</fileName>
                         <fileSize unit="megabytes">34.5</fileSize>
                         <checksum type="MD5"> 703b7fee0c8fbf851c856c65439a3973 </checksum>
                         <derivedFrom>Physical Object</derivedFrom>
-                        <relationship>page 1</relationship>
                         <Technical>
                             <fileFormat>TIFF</fileFormat>
                             <imageFormat>Raw</imageFormat>
