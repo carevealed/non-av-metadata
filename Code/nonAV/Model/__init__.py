@@ -1,7 +1,10 @@
-from Model.Element import Element as Element
-from Model.CAssetPart import CAssetPart as CAssetPart
-from Model.CInstantiation import CInstantiation as CInstantiation
-from Model.CInstantiations import CInstantiations as CInstantiations
-from Model.CAssets import CAssets as CAssets
-from Model.CDescriptionDocument import CDescriptionDocument as CDescriptionDocument
+from Model.CAPS_node import CAPS_node
+from Model.Element import Element
+from Model.Instantiation import Instantiation
+from Model.Instantiations import Instantiations
+from Model.AssetPart import AssetPart
+from Model.DescriptionDocument import DescriptionDocument
+from Model.Assets import Assets
+from Model.CollectionReference import CollectionReference
+from Model.DublinCore import DublinCore
 

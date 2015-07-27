@@ -1,46 +1,138 @@
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
+# from Model import Instantiation
+# from Model import Technical
+# from Model import Instantiations
+# from Model import Assets
+# from Model import DublinCore
+
+from xml.etree.ElementTree import Element as etElement
+from xml.etree.ElementTree import tostring
+from collections import OrderedDict
+
 
 class Element(object):
-    def __init__(self):
-    # def __init__(self, *args, **kwargs):
-    #     if kwargs:
-    #         print("KWARGS")
-    #     if args:
-    #         print("ARGS")
-        print("dfdf")
-        self.__tag = None
-        """@AttributeType string"""
-        self.__data = None
-        """@AttributeType string"""
-        self.__attributes = None
-        """@AttributeType OrderedDict
-        Contains all the attributes for a given XML element."""
+    VALID_KEYS = ["CollectionReference",
+                  "DescriptionDocument",
+                  "DublinCore",
+                  "title",
+                  "creator",
+                  "subject",
+                  "subject",
+                  "description",
+                  "date",
+                  "type",
+                  "format",
+                  "identifier",
+                  "source",
+                  "source",
+                  "language",
+                  "coverage",
+                  "rights",
+                  "Assets",
+                  "objectID",
+                  "projectID",
+                  "physicalLocation",
+                  "dimensionsHeight",
+                  "dimensionsWidth",
+                  "color",
+                  "hasParts",
+                  "additionalDescription",
+                  "AssetPart",
+                  "Instantiations",
+                  "Instantiation",
+                  "fileName",
+                  "fileSize",
+                  "checksum",
+                  "derivedFrom",
+                  "Technical",
+                  "fileFormat",
+                  "imageFormat",
+                  "resolutionWidth",
+                  "resolutionHeight",
+                  "colorSpace",
+                  "chromaSubsampling",
+                  "colorDepth",
+                  "compressionMode",
+                  "additionalTechnicalNotes"]
 
+    VALID_ATTRIBUTES = []  # TODO add in valid attributes
+
+    def __init__(self, tag, value, attributes):
+        """
+        :param str tag: The XML tag (name of the element). This must be a valid tag in CAPS/CAPS Non-av metadata scheme.
+        :param value: the value inside the element.
+        :param dict attributes: Contains all the attributes for a given XML element
+
+        tag (str): The XML tag (name of the element).
+        value: the value inside the element.
+        attributes (OrderedDict): Contains all the attributes for a given XML element
+
+        """
+
+        if not isinstance(tag, str):
+            raise TypeError("Expected str, received " + str(type(tag)))
+        if tag not in self.VALID_KEYS:
+            raise ValueError("\"" + str(tag) + "\" is not a valid CAVPP element key.")
+        self._tag = tag
+
+        self._data = value
+        if not isinstance(attributes, dict):
+            raise TypeError("Expected Dict, recieved " + str(type(attributes)))
+        self._attributes = OrderedDict(attributes)
+
+
+    def tag(self):
+        return self._tag
 
     def get_attributes(self):
-        """@ReturnType OrderedDict"""
-        pass
+        """
+        :rtype: OrderedDict
+        """
+        return self._attributes
 
     def add_attribute(self, key, value):
-        """@ParamType key string
-        The name part of the name/value pair
-        @ParamType value string
-        The value part of the name/value pair.
-        @ReturnType void"""
-        pass
+        """
+        :param str key: The name part of the name/value pair
+        :param str value: The value part of the name/value pair.
+        :rtype: None
+        """
+
+        self._attributes[key] = value
+
 
     def delete_attribute(self, key):
-        """@ParamType key string
-        @ReturnType void"""
-        pass
+        """
+        :param str key: The key of the attribute you want to delete
+        :rtype: None
+        """
+        if key not in self._attributes:
+            raise KeyError("No attribute named '" + key + "' found.")
+        del self._attributes[key]
 
-    def __repr__(self):
-        """Returns the XML element as an etree element.
-        @ReturnType etElement"""
+
+    def __str__(self):
+        """
+        Returns the XML element as an etree element.
+        :rtype: etElement
+        """
+
+        return str(tostring(self.xml))
         pass
 
     def get_data(self):
-        """@ReturnType string"""
+        """
+        :rtype: str
+        """
+
         pass
 
+    @property
+    def xml(self):
+        element = etElement(self._tag)
+        element.text = self._data
+        if self._attributes:
+            for key in self._attributes:
+                print(key)
+                element.set(key, self._attributes[key])
+        return element
