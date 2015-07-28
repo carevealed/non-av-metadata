@@ -92,32 +92,17 @@ class Technical(CAPS_node):
 
     def _make_xml(self):
         root = Element(tag="Technical")
-        if self._fileFormat:
-            root.add_child(Element(tag='fileFormat', data=self.fileFormat))
+        root.add_child(Element(tag='fileFormat', data=self.fileFormat))
+        root.add_child(Element(tag='imageFormat', data=self.imageFormat))
+        root.add_child(Element(tag='resolutionWidth', data=self.resolutionWidth, attributes={"unit": self.resolutionWidthUnit}))
+        root.add_child(Element(tag='resolutionHeight', data=self.resolutionHeight, attributes={"unit": self.resolutionHeightUnit}))
+        root.add_child(Element(tag='colorSpace', data=self.colorSpace))
 
-        if self._imageFormat:
-            root.add_child(Element(tag='imageFormat', data=self.imageFormat))
-        if self._resolutionWidth:
-            if self._resolutionWidthUnit:
-                root.add_child(Element(tag='resolutionWidth', data=self.resolutionWidth, attributes={"unit": self.resolutionWidthUnit}))
-            else:
-                raise Exception("resolutionWidth element is used but is missing a unit attribute.")
-        if self._resolutionHeight:
-            if self._resolutionHeightUnit:
-                root.add_child(Element(tag='resolutionHeight', data=self.resolutionHeight, attributes={"unit": self.resolutionHeightUnit}))
-            else:
-                raise Exception("resolutionHeight element is used but is missing a unit attribute.")
-        if self._colorSpace:
-            root.add_child(Element(tag='colorSpace', data=self.colorSpace))
         if self._chromaSubsampling:
             root.add_child(Element(tag='chromaSubsampling', data=self.chromaSubsampling))
-        if self._colorDepth:
-            if self.colorDepthUnit:
-                root.add_child(Element(tag='colorDepth', data=self.colorDepth, attributes={"unit": self.colorDepthUnit}))
-            else:
-                raise Exception("colorDepth element is used but is missing a unit attribute.")
-        if self._compressionMode:
-            root.add_child(Element(tag='compressionMode', data=self.compressionMode))
+
+        root.add_child(Element(tag='colorDepth', data=self.colorDepth, attributes={"unit": self.colorDepthUnit}))
+        root.add_child(Element(tag='compressionMode', data=self.compressionMode))
         if self._additionalTechnicalNotes:
             root.add_child(Element(tag='additionalTechnicalNotes', data=self.additionalTechnicalNotes))
         return root
@@ -128,21 +113,30 @@ class Technical(CAPS_node):
 
     def _check_required(self):
         missing_fields = []
+        missing_attributes = []
         if not self.fileFormat:
             missing_fields.append("fileFormat")
         if not self.imageFormat:
             missing_fields.append("imageFormat")
         if not self.resolutionHeight:
             missing_fields.append("resolutionHeight")
+        if not self.resolutionHeightUnit:
+            missing_attributes.append("resolutionHeight unit")
+        if not self.resolutionWidthUnit:
+            missing_attributes.append("resolutionWidth unit")
         if not self.resolutionWidth:
             missing_fields.append("resolutionWidth")
         if not self.colorSpace:
             missing_fields.append("colorSpace")
         if not self.colorDepth:
             missing_fields.append("colorDepth")
+        if not self.colorDepthUnit:
+            missing_attributes.append("colorDepth unit")
         if not self.compressionMode:
             missing_fields.append("compressionMode")
         if len(missing_fields) > 0:
+            raise Exception("Missing required metadata fields, '" + "', '".join(missing_fields) + "'.")
+        if len(missing_attributes) > 0:
             raise Exception("Missing required metadata fields, '" + "', '".join(missing_fields) + "'.")
 
     @property
