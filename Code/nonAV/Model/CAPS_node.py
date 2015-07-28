@@ -9,6 +9,7 @@ class CAPS_node(object):
     __metaclass__ = ABCMeta
     @abstractmethod
     def _make_xml(self):
+        print("You shouldn't be here")
         pass
 
     # @abstractproperty
@@ -26,7 +27,7 @@ class CAPS_node(object):
 
     def __str__(self):
         # print(self.xml)
-        etree = tostring(self.xml, encoding="utf-8")
+        etree = tostring(self.xml.xml, encoding="utf-8")
         dom = parseString(str(etree.decode()))
         return dom.toprettyxml()
 

@@ -120,30 +120,30 @@ class Technical(CAPS_node):
             root.add_child(Element(tag='compressionMode', data=self.compressionMode))
         if self._additionalTechnicalNotes:
             root.add_child(Element(tag='additionalTechnicalNotes', data=self.additionalTechnicalNotes))
-        return root.xml
+        return root
 
     def validate_attribute(self):
         # todo fill in validate_attribute
         pass
 
     def _check_required(self):
-        missing_metatdata = []
+        missing_fields = []
         if not self.fileFormat:
-            missing_metatdata.append("fileFormat")
+            missing_fields.append("fileFormat")
         if not self.imageFormat:
-            missing_metatdata.append("imageFormat")
+            missing_fields.append("imageFormat")
         if not self.resolutionHeight:
-            missing_metatdata.append("resolutionHeight")
+            missing_fields.append("resolutionHeight")
         if not self.resolutionWidth:
-            missing_metatdata.append("resolutionWidth")
+            missing_fields.append("resolutionWidth")
         if not self.colorSpace:
-            missing_metatdata.append("colorSpace")
+            missing_fields.append("colorSpace")
         if not self.colorDepth:
-            missing_metatdata.append("colorDepth")
+            missing_fields.append("colorDepth")
         if not self.compressionMode:
-            missing_metatdata.append("compressionMode")
-        if len(missing_metatdata) > 0:
-            raise Exception("Missing required metadata fields, '" + "', '".join(missing_metatdata) + "'.")
+            missing_fields.append("compressionMode")
+        if len(missing_fields) > 0:
+            raise Exception("Missing required metadata fields, '" + "', '".join(missing_fields) + "'.")
 
     @property
     def fileFormat(self):
