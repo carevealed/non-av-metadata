@@ -137,7 +137,7 @@ class Technical(CAPS_node):
         if len(missing_fields) > 0:
             raise Exception("Missing required metadata fields, '" + "', '".join(missing_fields) + "'.")
         if len(missing_attributes) > 0:
-            raise Exception("Missing required metadata fields, '" + "', '".join(missing_fields) + "'.")
+            raise Exception("Missing required metadata attributes, '" + "', '".join(missing_attributes) + "'.")
 
     @property
     def fileFormat(self):

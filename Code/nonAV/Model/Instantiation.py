@@ -22,6 +22,7 @@ class Instantiation(CAPS_node):
         """
 
         super(Instantiation, self).__init__()
+
         self._fileName = None
         self._fileSize = None
         self._fileSizeUnit = None
