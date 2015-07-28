@@ -23,7 +23,6 @@ class Technical(CAPS_node):
                  chromaSubsampling = None,
                  colorBitDepth = None,
                  compressionMode = None):
-        super(Technical, self).__init__()
         """
         :param str fileFormat:              Specifies the MIME type of the file.
         :param str imageFormat:             Specifies the encoding of the digital file. For example: JPEG200
@@ -43,6 +42,7 @@ class Technical(CAPS_node):
         _additionalTechnicalNotes (str):    Additional techincal notes about the file that do not fit into other elements
 
         """
+        super(Technical, self).__init__()
         self._fileFormat = None
         self._imageFormat = None
         self._resolutionWidth = None
@@ -123,6 +123,7 @@ class Technical(CAPS_node):
         return root.xml
 
     def validate_attribute(self):
+        # todo fill in validate_attribute
         pass
 
     def _check_required(self):

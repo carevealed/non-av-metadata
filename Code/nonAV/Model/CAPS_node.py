@@ -3,6 +3,7 @@
 from abc import ABCMeta, abstractmethod, abstractproperty
 from xml.dom.minidom import parseString
 from xml.etree.ElementTree import tostring
+from Model import Element
 
 class CAPS_node(object):
     __metaclass__ = ABCMeta
@@ -14,7 +15,9 @@ class CAPS_node(object):
     @property
     def xml(self):
         self._check_required()
-        return self._make_xml()
+        xml = self._make_xml()
+
+        return xml
 
 
 

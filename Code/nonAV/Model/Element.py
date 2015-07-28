@@ -93,7 +93,7 @@ class Element(object):
                     pass
             self._attributes = OrderedDict(attributes)
         else:
-            self._attributes = None
+            self._attributes = OrderedDict()
 
     def tag(self):
         return self._tag
@@ -111,6 +111,7 @@ class Element(object):
         :rtype: None
         """
 
+        assert isinstance(self._attributes, OrderedDict)
         self._attributes[key] = value
 
 
