@@ -41,6 +41,7 @@ class CAPS_node(object):
 
     def __str__(self):
         # print(self.xml)
+        assert self.xml is not None
         etree = tostring(self.xml.xml, encoding="utf-8")
         dom = parseString(str(etree.decode()))
         return dom.toprettyxml()

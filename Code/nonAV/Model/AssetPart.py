@@ -3,26 +3,42 @@
 # from Model import Assets
 # from Model import Instantiations
 from Model import CAPS_node
+from Model import Element
 
 class AssetPart(CAPS_node):
-    def __init__(self):
+    def __init__(self, instantiations=None):
+        """
+        :param Instantations instantiations:
+        self._instantiations (list)
+        """
         super(AssetPart, self).__init__()
-        self.__instantiations = None
-        """@AttributeType []
-        List of Instantiations Objects"""
-        self.unnamed_Assets_ = None
-        # @AssociationType Model.Assets
-        self.unnamed_Instantiations_ = None
-        # @AssociationType Model.Instantiations
-        # @AssociationKind Composition
+        self._instantiations = None
 
-    def add_instantiations(self, new_instantiations):
-        """@ParamType new_instantiations Model.Instantiations"""
-        pass
+        if instantiations:
+            self.instantiations = instantiations
 
-    def __make_xml(self):
+
+    def _make_xml(self):
+        root = Element("AssetPart")
+        root.add_child(self.instantiations)
+        return root
+
+    def _check_required(self):
+        missing_fields = []
+        if not self.instantiations:
+            missing_fields.append("instantiations")
+
+        if len(missing_fields) > 0:
+            raise Exception("Missing required metadata fields, '" + "', '".join(missing_fields) + "'.")
         pass
 
     def validate_attribute(self):
         pass
 
+    @property
+    def instantiations(self):
+        return self._instantiations
+
+    @instantiations.setter
+    def instantiations(self, value):
+        self._instantiations = value

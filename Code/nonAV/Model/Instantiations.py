@@ -9,13 +9,10 @@ class Instantiations(CAPS_node):
     def __init__(self):
         """
         _relationship (str):
-        _instantiation (list):
+        _instantiation (list): list of Instantiation Objects
         """
         self._relationship = None
         self._instantiation = []
-        """@AttributeType OrderedDict"""
-        """@AttributeType list
-        list of Instantiation Objects"""
 
 
     def add_instantiation(self, new_instantiation):
@@ -28,7 +25,7 @@ class Instantiations(CAPS_node):
         pass
 
     def _make_xml(self):
-        root = Element("Instantiation", attributes={"relationship":self.relationship})
+        root = Element("Instantiation", attributes={"relationship": self.relationship})
         for instance in self._instantiation:
             root.add_child(instance)
         return root
