@@ -5,6 +5,7 @@
 from Model import CAPS_node
 from Model import Element
 
+
 class AssetPart(CAPS_node):
     def __init__(self, instantiations=None):
         """

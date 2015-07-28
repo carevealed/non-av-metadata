@@ -5,6 +5,8 @@ from xml.dom.minidom import parseString
 from xml.etree.ElementTree import tostring
 from Model import Element
 
+
+
 class CAPS_node(object):
     __metaclass__ = ABCMeta
     @abstractmethod

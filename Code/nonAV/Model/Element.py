@@ -142,6 +142,7 @@ class Element(object):
         pass
 
     def add_child(self, child):
+        assert(isinstance(child, Element))
         self._children.append(child)
 
     @property

@@ -14,7 +14,6 @@ class Instantiations(CAPS_node):
         self._relationship = None
         self._instantiation = []
 
-
     def add_instantiation(self, new_instantiation):
         # """@ParamType new_instantiation Model.Instantiation"""
         """
@@ -29,7 +28,6 @@ class Instantiations(CAPS_node):
         for instance in self._instantiation:
             root.add_child(instance)
         return root
-        pass
 
     def _check_required(self):
         missing_fields = []
