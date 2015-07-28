@@ -24,7 +24,7 @@ class Instantiations(CAPS_node):
         pass
 
     def _make_xml(self):
-        root = Element("Instantiation", attributes={"relationship": self.relationship})
+        root = Element("Instantiations", attributes={"relationship": self.relationship})
         for instance in self._instantiation:
             root.add_child(instance)
         return root
