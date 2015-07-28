@@ -7,4 +7,6 @@ from Model.DescriptionDocument import DescriptionDocument
 from Model.Assets import Assets
 from Model.CollectionReference import CollectionReference
 from Model.DublinCore import DublinCore
+from Model.Technical import Technical
+from Model.Technical import CompressionModes
 
