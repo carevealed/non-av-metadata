@@ -18,7 +18,6 @@ class AssetPart(CAPS_node):
         if instantiations:
             self.instantiations = instantiations
 
-
     def _make_xml(self):
         root = Element("AssetPart")
         root.add_child(self.instantiations)
