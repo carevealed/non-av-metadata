@@ -8,6 +8,7 @@
 
 from xml.etree.ElementTree import Element as etElement
 from xml.etree.ElementTree import tostring
+from xml.dom.minidom import parseString
 from collections import OrderedDict
 
 
@@ -58,10 +59,10 @@ class Element(object):
 
     VALID_ATTRIBUTES = []  # TODO add in valid attributes
 
-    def __init__(self, tag, value, attributes):
+    def __init__(self, tag, data=None, attributes=None):
         """
         :param str tag: The XML tag (name of the element). This must be a valid tag in CAPS/CAPS Non-av metadata scheme.
-        :param value: the value inside the element.
+        :param data: the value inside the element.
         :param dict attributes: Contains all the attributes for a given XML element
 
         tag (str): The XML tag (name of the element).
@@ -75,12 +76,24 @@ class Element(object):
         if tag not in self.VALID_KEYS:
             raise ValueError("\"" + str(tag) + "\" is not a valid CAVPP element key.")
         self._tag = tag
-
-        self._data = value
-        if not isinstance(attributes, dict):
-            raise TypeError("Expected Dict, recieved " + str(type(attributes)))
-        self._attributes = OrderedDict(attributes)
-
+        self._children = []
+        if data:
+            self._data = str(data)
+        else:
+            self._data = None
+        if attributes:
+            if not isinstance(attributes, dict):
+                raise TypeError("Expected Dict, recieved " + str(type(attributes)))
+            for key in attributes.keys():
+                try:
+                    test = int(key[0])
+                    print(test)
+                    raise TypeError("You cannot start attributes with a number")
+                except ValueError:
+                    pass
+            self._attributes = OrderedDict(attributes)
+        else:
+            self._attributes = None
 
     def tag(self):
         return self._tag
@@ -113,12 +126,12 @@ class Element(object):
 
     def __str__(self):
         """
-        Returns the XML element as an etree element.
-        :rtype: etElement
+        Returns the XML element pretty string.
+        :rtype: str
         """
-
-        return str(tostring(self.xml))
-        pass
+        etree = tostring(self.xml, encoding="utf-8")
+        dom = parseString(str(etree.decode()))
+        return dom.toprettyxml()
 
     def get_data(self):
         """
@@ -127,12 +140,17 @@ class Element(object):
 
         pass
 
+    def add_child(self, child):
+        self._children.append(child)
+
     @property
     def xml(self):
         element = etElement(self._tag)
         element.text = self._data
         if self._attributes:
             for key in self._attributes:
-                print(key)
+                # print(key)
                 element.set(key, self._attributes[key])
+        for child in self._children:
+            element.append(child.xml)
         return element
