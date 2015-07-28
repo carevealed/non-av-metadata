@@ -1,9 +1,9 @@
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
-from Model import Element
-from Model import Technical
-from Model import Instantiations
-from Model import CAPS_node
+from NonAVModel import Element
+from NonAVModel import Technical
+from NonAVModel import Instantiations
+from NonAVModel import CAPS_node
 
 class Instantiation(CAPS_node):
     def __init__(self, fileName=None, md5=None, generation=None):

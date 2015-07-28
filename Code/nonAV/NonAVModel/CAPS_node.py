@@ -3,7 +3,7 @@
 from abc import ABCMeta, abstractmethod, abstractproperty
 from xml.dom.minidom import parseString
 from xml.etree.ElementTree import tostring
-from Model import Element
+from NonAVModel import Element
 
 
 

@@ -2,8 +2,8 @@
 # -*- coding: UTF-8 -*-
 # from Model import Assets
 # from Model import Instantiations
-from Model import CAPS_node
-from Model import Element
+from NonAVModel import CAPS_node
+from NonAVModel import Element
 
 
 class AssetPart(CAPS_node):

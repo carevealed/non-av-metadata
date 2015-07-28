@@ -1,9 +1,9 @@
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
-from Model import Element
+from NonAVModel import Element
 from collections import OrderedDict
-import Model.DescriptionDocument
-from Model import CAPS_node
+import NonAVModel.DescriptionDocument
+from NonAVModel import CAPS_node
 
 class DublinCore(CAPS_node):
     def __init__(self,
