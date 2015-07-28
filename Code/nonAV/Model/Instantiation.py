@@ -42,22 +42,16 @@ class Instantiation(CAPS_node):
 
     def _make_xml(self):
         root = Element("Instantiation")
-        if self.fileName:
-            root.add_child(Element(tag="fileName", data=self.fileName))
-        if self.fileSize:
-            if self.fileSizeUnit:
-                root.add_child(Element(tag="fileSize", data=self.fileSize, attributes={"unit": self.fileSizeUnit}))
-        if self.checksum:
-            if self.checksumType:
-                root.add_child(Element(tag="checksum", data=self.checksum, attributes={"type": self.checksumType}))
-            else:
-                raise Exception("checksum element is used but is missing a type attribute.")
-        if self.derivedFrom:
-            root.add_child(Element(tag="derivedFrom", data=self.derivedFrom))
-        if self.technical:
-            root.add_child(self.technical)
-        if self.generation:
-            root.add_attribute("generation", self.generation)
+
+        root.add_child(Element(tag="fileName", data=self.fileName))
+        root.add_child(Element(tag="fileSize", data=self.fileSize, attributes={"unit": self.fileSizeUnit}))
+        root.add_child(Element(tag="checksum", data=self.checksum, attributes={"type": self.checksumType}))
+        root.add_child(Element(tag="derivedFrom", data=self.derivedFrom))
+
+        root.add_child(self.technical)
+
+        root.add_attribute("generation", self.generation)
+
         return root
 
     def _check_required(self):
