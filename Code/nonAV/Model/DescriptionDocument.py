@@ -41,6 +41,8 @@ class DescriptionDocument(CAPS_node):
 
     @dublinCore.setter
     def dublinCore(self, value):
+        if not isinstance(value, Element):
+            raise TypeError("Expected an Element type but received " + str(type(Element)))
         self._dublinCore = value
 
     @property
