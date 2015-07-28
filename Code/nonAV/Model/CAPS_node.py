@@ -20,18 +20,6 @@ class CAPS_node(object):
 
         return xml
 
-
-
-    def get_xml(self):
-        pass
-
-    def __str__(self):
-        # print(self.xml)
-        etree = tostring(self.xml.xml, encoding="utf-8")
-        dom = parseString(str(etree.decode()))
-        return dom.toprettyxml()
-
-
     @classmethod
     def validate_tag(self):
         pass
@@ -48,3 +36,11 @@ class CAPS_node(object):
     def __init__(self):
         self.__xML_attributes = None
 
+    def get_xml(self):
+        pass
+
+    def __str__(self):
+        # print(self.xml)
+        etree = tostring(self.xml.xml, encoding="utf-8")
+        dom = parseString(str(etree.decode()))
+        return dom.toprettyxml()
