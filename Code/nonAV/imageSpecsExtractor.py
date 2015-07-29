@@ -18,7 +18,7 @@ def cleanup_bitdepth(bd):
 
 
 
-def image_specs_extractor(file):
+def image_specs_extractor(file, media_info_path='mediainfo'):
 	height = None
 	width = None
 	imageFormat = None #todo: make more accurate
@@ -46,7 +46,7 @@ def image_specs_extractor(file):
 
 	#using MediaInfo
 
-	mediaInfoData = subprocess.check_output(['mediainfo', '--Output=XML', file], universal_newlines=True)
+	mediaInfoData = subprocess.check_output([media_info_path, '--Output=XML', file], universal_newlines=True)
 	dom = parseString(mediaInfoData)
 	for node in dom.getElementsByTagName("Color_space"):
 		colorspace = node.firstChild.data

@@ -54,7 +54,7 @@
                         <checksum type="MD5"> 703b7fee0c8fbf851c856c65439a3973</checksum>
                         <derivedFrom>c000001_pres.tif</derivedFrom>
                         <Technical>
-                            <fileFormat>JPEG</fileFormat>
+                            <fileFormat>image/jpeg</fileFormat>
                             <imageFormat>Raw</imageFormat>
                             <resolutionWidth unit="pixels">994</resolutionWidth>
                             <resolutionHeight unit="pixels">401</resolutionHeight>
