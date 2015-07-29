@@ -9,7 +9,7 @@ from NonAVModel.CAPS_node import CAPS_node
 
 class CompressionModes(Enum):
     LOSSLESS = "Lossless"
-    LOSY = "Lossy"
+    LOSSY = "Lossy"
     UNCOMPRESSED = "Uncompressed"
 
 
@@ -199,10 +199,7 @@ class Technical(CAPS_node):
 
     @colorSpace.setter
     def colorSpace(self, value):
-        color_space_pattern = re.compile('\d+:\d+:\d+')
-        # Todo: check if colorSpace, it is properly formated with regex
-        if not color_space_pattern.match(value):
-            raise ValueError( "'" + str(value) + "' is not a proper color space format")
+
         self._colorSpace = value
 
 
@@ -212,6 +209,11 @@ class Technical(CAPS_node):
 
     @chromaSubsampling.setter
     def chromaSubsampling(self, value):
+        chroma_sub_pattern = re.compile('\d+:\d+:\d+')
+        # Todo: check if colorSpace, it is properly formated with regex
+        if not chroma_sub_pattern.match(value):
+            raise ValueError( "'" + str(value) + "' is not a proper chroma subsampling format")
+
         self._chromaSubsampling = value
 
 
