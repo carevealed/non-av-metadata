@@ -3,6 +3,7 @@ import os
 import subprocess
 from xml.dom.minidom import parseString
 import sys
+import re
 
 __author__ = 'California Audio Visual Preservation Project'
 
@@ -10,7 +11,11 @@ from PIL import Image, ExifTags
 from NonAVModel import Technical, CompressionModes
 
 
-image_file = "CAVP_color.jpg"
+def cleanup_bitdepth(bd):
+	results = re.search("\d+(?=\sbit)", bd)
+
+	return int(results.group(0))
+
 
 
 def image_specs_extractor(file):
@@ -25,17 +30,18 @@ def image_specs_extractor(file):
 
 
 	#standard Python
-	file_format = mimetypes.types_map[os.path.splitext(image_file)[1]]
+	file_format = mimetypes.types_map[os.path.splitext(file)[1]]
 
 	# using pillow
-	im = Image.open(image_file)
+	im = Image.open(file)
 	height = im.size[1]
 	width = im.size[0]
 	compression = None
 	compressionMode = None
 	colorspace = im.mode
-	bitDepth = im.bits
+	bitDepth = None
 	chroma_subsampling = None
+
 
 
 	#using MediaInfo
@@ -57,6 +63,15 @@ def image_specs_extractor(file):
 		compressionMode = CompressionModes.LOSSY
 	elif compression == "Lossless":
 		compressionMode = CompressionModes.LOSSLESS
+	else:
+		compressionMode = CompressionModes.UNKNOWN
+
+	try:
+		bitDepth = im.bits
+	except:
+		for node in dom.getElementsByTagName("Bit_depth"):
+			bd = node.firstChild.data
+			bitDepth = cleanup_bitdepth(bd)
 
 	# print(dom.toprettyxml())
 
@@ -74,11 +89,29 @@ def image_specs_extractor(file):
 		xml.compressionMode = compressionMode
 	return xml
 
+
 def main():
 	if len(sys.argv) < 2:
 		sys.stderr.write("Needs at least one argument.\n")
 		exit(-1)
 
+	if len(sys.argv) == 3:
+		if sys.argv[1] == "-t":
+			if not os.path.isdir(sys.argv[2]):
+				sys.stderr.write("Not a directory.\n")
+				quit(-1)
+			if not os.path.exists(sys.argv[2]):
+				sys.stderr.write("Directory does not exist.\n")
+				quit(-1)
+
+
+			print("Running test mode")
+			test(sys.argv[2])
+			print("Test finished.")
+			exit(0)
+		else:
+			sys.stderr.write("Not a valid option.\n")
+			quit(-1)
 	if not os.path.exists(sys.argv[1]):
 		sys.stderr.write("File doesn't exists.\n")
 		exit(-1)
@@ -87,5 +120,34 @@ def main():
 		print(image_specs_extractor(sys.argv[1]))
 
 
+def test(test_folder):
+	print("Running test")
+	include_hidden = False
+	accepted_formats = ['.tif', '.jpg']
+	source_folder = test_folder
+	if os.path.exists(source_folder):
+		for root, dirs, files in os.walk(source_folder):
+			for file in files:
+				if not include_hidden:
+					if file.startswith('.'):
+						continue
+				if not os.path.splitext(file)[1] in accepted_formats:
+					continue
+				current_file = os.path.join(root, file)
+				print(current_file)
+				try:
+					xml = image_specs_extractor(current_file)
+					print(xml)
+				except Exception as e:
+					sys.stdout.flush()
+					sys.stderr("Error for " + current_file + ".\n")
+					sys.stderr(e)
+
+
+
+
+	pass
+
 if __name__ == '__main__':
-    main()
+	# test()
+	main()
