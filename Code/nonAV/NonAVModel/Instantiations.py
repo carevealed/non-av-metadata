@@ -11,6 +11,7 @@ class Instantiations(CAPS_node):
         _relationship (str):
         _instantiation (list): list of Instantiation Objects
         """
+        super(Instantiations, self).__init__()
         self._relationship = None
         self._instantiation = []
 
@@ -32,16 +33,18 @@ class Instantiations(CAPS_node):
     def check_required_data(self):
         missing_fields = []
         missing_attributes = []
+        valid = False
+
         if not self.relationship:
             missing_attributes.append("relationship")
         if not self._instantiation:
             missing_fields.append("instantiation")
 
-        return self.error_report(missing_fields=missing_fields, missing_attributes=missing_attributes)
-        # if len(missing_attributes) > 0:
-        #     raise Exception("Missing required metadata attributes, '" + "', '".join(missing_attributes) + "'.")
-        # if len(missing_fields) > 0:
-        #     raise Exception("Missing required metadata fields, '" + "', '".join(missing_fields) + "'.")
+        if len(missing_fields) == 0 and len(missing_attributes) == 0:
+            valid = True
+
+        return self.xml_status(valid=valid, missing_fields=missing_fields, missing_attributes=missing_attributes)
+
 
     def validate_attribute(self):
         pass

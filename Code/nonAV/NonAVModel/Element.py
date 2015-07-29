@@ -157,6 +157,8 @@ class Element(object):
         pass
 
     def add_child(self, child):
+        if not isinstance(child, Element):
+            raise TypeError(str(type(Element)))
         assert(isinstance(child, Element))
         self._children.append(child)
 

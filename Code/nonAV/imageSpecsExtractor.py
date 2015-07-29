@@ -23,18 +23,20 @@ def cleanup_bitdepth(bd):
 	return int(results.group(0))
 
 
-def image_specs_extractor(file, media_info_path='mediainfo'):
+def image_specs_extractor(file, technical_notes=None, media_info_path='mediainfo'):
 	height = None
 	width = None
-	imageFormat = None #todo: make more accurate
-	colorspace = None  #todo: change to colorspace
+	imageFormat = None  # todo: make more accurate
+	colorspace = None  # todo: change to colorspace
 	file_format = None
 	compressionMode = None
 	bitDepth = None
 	imageFormat = None
 
 
-	#standard Python
+
+
+	# standard Python
 	file_format = mimetypes.types_map[os.path.splitext(file)[1]]
 
 	# using pillow
@@ -49,7 +51,7 @@ def image_specs_extractor(file, media_info_path='mediainfo'):
 
 
 
-	#using MediaInfo
+	# using MediaInfo
 	try:
 		mediaInfoData = subprocess.check_output([media_info_path, '--Output=XML', file], universal_newlines=True)
 	except FileNotFoundError as d:
@@ -94,6 +96,9 @@ def image_specs_extractor(file, media_info_path='mediainfo'):
 
 	if compressionMode:
 		xml.compressionMode = compressionMode
+	if technical_notes:
+		assert (isinstance(technical_notes, str))
+		xml.additionalTechnicalNotes = technical_notes
 	return xml
 
 
@@ -142,7 +147,9 @@ def test(test_folder):
 				current_file = os.path.join(root, file)
 				print(current_file)
 				try:
-					xml = image_specs_extractor(current_file)
+					xml = image_specs_extractor(current_file, technical_notes="This record is generated "
+																			  "from a test using the files "
+																			  "in {}.".format(source_folder))
 					print(xml)
 				except MediaInfoException as e:
 					sys.stderr.write(str(e))
@@ -152,6 +159,7 @@ def test(test_folder):
 				# 	sys.stderr.write("Error for " +current_file + ".\n")
 				# 	sys.stderr.write(str(e))
 	pass
+
 
 if __name__ == '__main__':
 	# test()

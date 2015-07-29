@@ -15,7 +15,7 @@ class errors_report(enumerate):
 
 class CAPS_node(object):
     __metaclass__ = ABCMeta
-    error_report = namedtuple("error_report", ['missing_fields', 'missing_attributes'])
+    xml_status = namedtuple("xml_status", ['valid','missing_fields', 'missing_attributes'])
     report_errors = errors_report.STRICT
 
     @abstractmethod
@@ -71,6 +71,7 @@ class CAPS_node(object):
 
     def __str__(self):
         # print(self.xml)
+
         assert self.xml is not None
         etree = tostring(self.xml.xml, encoding="utf-8")
         dom = parseString(str(etree.decode()))

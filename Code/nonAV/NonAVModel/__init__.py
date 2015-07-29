@@ -1,4 +1,5 @@
 from NonAVModel.CAPS_node import CAPS_node
+from NonAVModel.CAPS_node import errors_report
 from NonAVModel.Element import Element
 from NonAVModel.Instantiation import Instantiation
 from NonAVModel.Instantiations import Instantiations

@@ -5,6 +5,7 @@ from collections import OrderedDict
 import NonAVModel.DescriptionDocument
 from NonAVModel import CAPS_node
 
+
 class DublinCore(CAPS_node):
     def __init__(self,
                  title=None,
@@ -274,6 +275,7 @@ class DublinCore(CAPS_node):
     def check_required_data(self):
         missing_fields = []
         missing_attributes = []
+        valid = False
 
         if not self.title:
             missing_fields.append("title")
@@ -286,7 +288,10 @@ class DublinCore(CAPS_node):
         if not self.rights:
             missing_fields.append("rights")
 
-        return self.error_report(missing_fields=missing_fields, missing_attributes=missing_attributes)
+        if len(missing_fields) == 0 and len(missing_attributes) == 0:
+            valid = True
+
+        return self.xml_status(valid=valid, missing_fields=missing_fields, missing_attributes=missing_attributes)
 
 		#
         # if len(missing_fields) > 0:

@@ -188,6 +188,8 @@ class Assets(CAPS_node):
     def check_required_data(self):
         missing_attributes = []
         missing_fields = []
+        valid = False
+
         if not self.objectID:
             missing_fields.append("objectID")
 
@@ -218,7 +220,9 @@ class Assets(CAPS_node):
         if not self.hasParts:
             missing_fields.append("hasParts")
 
-        return self.error_report(missing_fields=missing_fields, missing_attributes=missing_attributes)
+        if len(missing_fields) == 0 and len(missing_attributes) == 0:
+            valid = True
+        return self.xml_status(valid=valid, missing_fields=missing_fields, missing_attributes=missing_attributes)
 
     def validate_attribute(self):
         pass

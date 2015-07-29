@@ -4,9 +4,11 @@ from NonAVModel import Element
 from NonAVModel import Technical
 from NonAVModel import Instantiations
 from NonAVModel import CAPS_node
+from NonAVModel import errors_report
+
 
 class Instantiation(CAPS_node):
-    def __init__(self, fileName=None, md5=None, generation=None):
+    def __init__(self, fileName=None, md5=None, generation=None, report_errors=errors_report.STRICT):
         """
         :param str fileName":   Specifies the name of the given file
         :param str md5":        Checksum hash in md5 format
@@ -32,6 +34,7 @@ class Instantiation(CAPS_node):
         self._technical = None
         self._generation = None
 
+        self.report_errors = report_errors
 
         if fileName:
             self.fileName = fileName
@@ -48,7 +51,7 @@ class Instantiation(CAPS_node):
         root.add_child(Element(tag="fileSize", data=self.fileSize, attributes={"unit": self.fileSizeUnit}))
         root.add_child(Element(tag="checksum", data=self.checksum, attributes={"type": self.checksumType}))
         root.add_child(Element(tag="derivedFrom", data=self.derivedFrom))
-
+        # if self.technical:
         root.add_child(self.technical)
 
         root.add_attribute("generation", self.generation)
@@ -58,6 +61,7 @@ class Instantiation(CAPS_node):
     def check_required_data(self):
         missing_attributes = []
         missing_fields = []
+        valid = False
         if not self.generation:
             missing_attributes.append("generation")
         if not self.fileName:
@@ -72,8 +76,13 @@ class Instantiation(CAPS_node):
             missing_attributes.append("checksum type")
         if not self.derivedFrom:
             missing_fields.append("derivedFrom")
+        if not self.technical:
+            missing_fields.append("technical")
 
-        return self.error_report(missing_fields=missing_fields, missing_attributes=missing_attributes)
+        if len(missing_fields) == 0 and len(missing_attributes) == 0:
+            valid = True
+
+        return self.xml_status(valid=valid, missing_fields=missing_fields, missing_attributes=missing_attributes)
         # if len(missing_attributes) > 0:
         #     raise Exception("Missing required metadata attributes, '" + "', '".join(missing_attributes) + "'.")
         # if len(missing_fields) > 0:

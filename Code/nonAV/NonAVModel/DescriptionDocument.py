@@ -25,11 +25,15 @@ class DescriptionDocument(CAPS_node):
     def check_required_data(self):
         missing_fields = []
         missing_attributes = []
+        valid = False
+
         if not self.dublinCore:
             missing_fields.append("dublinCore")
         if not self.assets:
             missing_fields.append("assets")
-        return self.error_report(missing_fields=missing_fields, missing_attributes=missing_attributes)
+        if len(missing_fields) == 0 and len(missing_attributes) == 0:
+            valid = True
+        return self.xml_status(valid=valid, missing_fields=missing_fields, missing_attributes=missing_attributes)
 
     def validate_attribute(self):
         pass

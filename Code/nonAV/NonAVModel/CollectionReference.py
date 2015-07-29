@@ -30,6 +30,7 @@ class CollectionReference(CAPS_node):
     def check_required_data(self):
         missing_attributes = []
         missing_fields = []
+        valid = False
 
         if not self.collectionSource:
             missing_attributes.append("collectionSource")
@@ -39,8 +40,11 @@ class CollectionReference(CAPS_node):
         if not self.descriptionDocument:
             missing_fields.append("DescriptionDocument")
 
-        return self.error_report(missing_fields=missing_fields, missing_attributes=missing_attributes)
-        pass
+        if len(missing_fields) == 0 and len(missing_attributes) == 0:
+            valid = True
+
+        return self.xml_status(valid=valid, missing_fields=missing_fields, missing_attributes=missing_attributes)
+
 
     def validate_attribute(self):
         pass

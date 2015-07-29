@@ -5,6 +5,7 @@ from NonAVModel import Element
 import NonAVModel.Instantiation
 import re
 from NonAVModel.CAPS_node import CAPS_node
+from NonAVModel import errors_report
 
 
 class CompressionModes(Enum):
@@ -23,7 +24,7 @@ class Technical(CAPS_node):
                  height = None,
                  chromaSubsampling = None,
                  colorBitDepth = None,
-                 compressionMode = None):
+                 compressionMode = None, report_errors=errors_report.STRICT):
         """
         :param str fileFormat:              Specifies the MIME type of the file.
         :param str imageFormat:             Specifies the encoding of the digital file. For example: JPEG200
@@ -57,6 +58,8 @@ class Technical(CAPS_node):
         self._colorDepthUnit = None
         self._chromaSubsampling = None
         self._additionalTechnicalNotes = None
+
+        self.report_errors = report_errors
 
 
         self.fileFormat = fileFormat
@@ -115,6 +118,8 @@ class Technical(CAPS_node):
     def check_required_data(self):
         missing_fields = []
         missing_attributes = []
+        valid = False
+
         if not self.fileFormat:
             missing_fields.append("fileFormat")
         if not self.imageFormat:
@@ -136,7 +141,10 @@ class Technical(CAPS_node):
         if not self.compressionMode:
             missing_fields.append("compressionMode")
 
-        return self.error_report(missing_fields=missing_fields, missing_attributes=missing_attributes)
+        if len(missing_fields) == 0 and len(missing_attributes) == 0:
+            valid = True
+
+        return self.xml_status(valid=valid, missing_fields=missing_fields, missing_attributes=missing_attributes)
 
     @property
     def fileFormat(self):
