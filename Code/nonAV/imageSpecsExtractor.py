@@ -11,11 +11,16 @@ from PIL import Image, ExifTags
 from NonAVModel import Technical, CompressionModes
 
 
+class MediaInfoException(Exception):
+	def __init__(self, message):
+		super(MediaInfoException, self).__init__(message)
+		self.errors = message
+
+
 def cleanup_bitdepth(bd):
 	results = re.search("\d+(?=\sbit)", bd)
 
 	return int(results.group(0))
-
 
 
 def image_specs_extractor(file, media_info_path='mediainfo'):
@@ -45,8 +50,10 @@ def image_specs_extractor(file, media_info_path='mediainfo'):
 
 
 	#using MediaInfo
-
-	mediaInfoData = subprocess.check_output([media_info_path, '--Output=XML', file], universal_newlines=True)
+	try:
+		mediaInfoData = subprocess.check_output([media_info_path, '--Output=XML', file], universal_newlines=True)
+	except FileNotFoundError as d:
+		raise MediaInfoException("Error running mediainfo" + str(d))
 	dom = parseString(mediaInfoData)
 	for node in dom.getElementsByTagName("Color_space"):
 		colorspace = node.firstChild.data
@@ -104,7 +111,6 @@ def main():
 				sys.stderr.write("Directory does not exist.\n")
 				quit(-1)
 
-
 			print("Running test mode")
 			test(sys.argv[2])
 			print("Test finished.")
@@ -138,14 +144,13 @@ def test(test_folder):
 				try:
 					xml = image_specs_extractor(current_file)
 					print(xml)
+				except MediaInfoException as e:
+					sys.stderr.write(str(e))
+					quit(-1)
 				except Exception as e:
 					sys.stdout.flush()
-					sys.stderr("Error for " + current_file + ".\n")
-					sys.stderr(e)
-
-
-
-
+					sys.stderr.write("Error for " +current_file + ".\n")
+					sys.stderr.write(str(e))
 	pass
 
 if __name__ == '__main__':
