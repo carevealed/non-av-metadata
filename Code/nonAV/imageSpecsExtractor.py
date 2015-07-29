@@ -147,10 +147,10 @@ def test(test_folder):
 				except MediaInfoException as e:
 					sys.stderr.write(str(e))
 					quit(-1)
-				except Exception as e:
-					sys.stdout.flush()
-					sys.stderr.write("Error for " +current_file + ".\n")
-					sys.stderr.write(str(e))
+				# except Exception as e:
+				# 	sys.stdout.flush()
+				# 	sys.stderr.write("Error for " +current_file + ".\n")
+				# 	sys.stderr.write(str(e))
 	pass
 
 if __name__ == '__main__':
