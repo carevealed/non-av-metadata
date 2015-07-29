@@ -22,15 +22,14 @@ class DescriptionDocument(CAPS_node):
         root.add_child(self.assets)
         return root
 
-    def _check_required(self):
+    def check_required_data(self):
         missing_fields = []
+        missing_attributes = []
         if not self.dublinCore:
             missing_fields.append("dublinCore")
         if not self.assets:
             missing_fields.append("assets")
-        if len(missing_fields) > 0:
-            raise Exception("Missing required metadata fields, '" + "', '".join(missing_fields) + "'.")
-        pass
+        return self.error_report(missing_fields=missing_fields, missing_attributes=missing_attributes)
 
     def validate_attribute(self):
         pass

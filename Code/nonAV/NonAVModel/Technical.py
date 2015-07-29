@@ -11,6 +11,7 @@ class CompressionModes(Enum):
     LOSSLESS = "Lossless"
     LOSSY = "Lossy"
     UNCOMPRESSED = "Uncompressed"
+    UNKNOWN = "Unknown"
 
 
 class Technical(CAPS_node):
@@ -111,7 +112,7 @@ class Technical(CAPS_node):
         # todo fill in validate_attribute
         pass
 
-    def _check_required(self):
+    def check_required_data(self):
         missing_fields = []
         missing_attributes = []
         if not self.fileFormat:
@@ -134,10 +135,8 @@ class Technical(CAPS_node):
             missing_attributes.append("colorDepth unit")
         if not self.compressionMode:
             missing_fields.append("compressionMode")
-        if len(missing_fields) > 0:
-            raise Exception("Missing required metadata fields, '" + "', '".join(missing_fields) + "'.")
-        if len(missing_attributes) > 0:
-            raise Exception("Missing required metadata attributes, '" + "', '".join(missing_attributes) + "'.")
+
+        return self.error_report(missing_fields=missing_fields, missing_attributes=missing_attributes)
 
     @property
     def fileFormat(self):

@@ -29,7 +29,7 @@ class Instantiations(CAPS_node):
             root.add_child(instance)
         return root
 
-    def _check_required(self):
+    def check_required_data(self):
         missing_fields = []
         missing_attributes = []
         if not self.relationship:
@@ -37,11 +37,11 @@ class Instantiations(CAPS_node):
         if not self._instantiation:
             missing_fields.append("instantiation")
 
-        if len(missing_attributes) > 0:
-            raise Exception("Missing required metadata attributes, '" + "', '".join(missing_attributes) + "'.")
-        if len(missing_fields) > 0:
-            raise Exception("Missing required metadata fields, '" + "', '".join(missing_fields) + "'.")
-
+        return self.error_report(missing_fields=missing_fields, missing_attributes=missing_attributes)
+        # if len(missing_attributes) > 0:
+        #     raise Exception("Missing required metadata attributes, '" + "', '".join(missing_attributes) + "'.")
+        # if len(missing_fields) > 0:
+        #     raise Exception("Missing required metadata fields, '" + "', '".join(missing_fields) + "'.")
 
     def validate_attribute(self):
         pass

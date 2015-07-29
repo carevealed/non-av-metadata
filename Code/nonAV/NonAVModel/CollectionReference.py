@@ -27,7 +27,7 @@ class CollectionReference(CAPS_node):
         root.add_child(self.descriptionDocument)
         return root
 
-    def _check_required(self):
+    def check_required_data(self):
         missing_attributes = []
         missing_fields = []
 
@@ -39,10 +39,7 @@ class CollectionReference(CAPS_node):
         if not self.descriptionDocument:
             missing_fields.append("DescriptionDocument")
 
-        if len(missing_attributes) > 0:
-            raise Exception("Missing required metadata attributes, '" + "', '".join(missing_attributes) + "'.")
-        if len(missing_fields) > 0:
-            raise Exception("Missing required metadata fields, '" + "', '".join(missing_fields) + "'.")
+        return self.error_report(missing_fields=missing_fields, missing_attributes=missing_attributes)
         pass
 
     def validate_attribute(self):
