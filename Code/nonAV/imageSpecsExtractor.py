@@ -1,3 +1,4 @@
+#!/usr/local/bin/python
 import mimetypes
 import os
 import subprocess
@@ -162,5 +163,4 @@ def test(test_folder):
 
 
 if __name__ == '__main__':
-	# test()
 	main()

@@ -1,30 +1,50 @@
+#!/usr/local/bin/python
+__author__ = 'California Audio Visual Preservation Project'
+import hashlib
 import os
 import sys
+from os.path import getsize
 
-__author__ = 'California Audio Visual Preservation Project'
 
 import imageSpecsExtractor
 import NonAVModel.Instantiation
 from NonAVModel import errors_report
 
 
-def create_MD5(filename):
-	# TODO calculate MD5
-	return "asdfasdf"
+def create_md5(file_name):
+
+	BUFFER = 8192
+	md5 = hashlib.md5()
+	with open(file_name, 'rb') as f:
+		for chunk in iter(lambda: f.read(BUFFER), b''):
+			md5.update(chunk)
+	return md5.hexdigest()
 
 
 def get_human_filesize(filename):
-	# todo get filesize with unit
-	# return (filesize, unit)
-	answer = (232, "kilobytes")
-	return answer
-	pass
+	num = int(getsize(filename))
+	file_size = 0
+	unit = None
+	for x in ['bytes', 'kilobytes', 'megabytes', 'gigabytes', 'terabytes']:
+		if num < 1024.0:
+			file_size = num
+			unit = x
+			break
+		num /= 1024.0
+	# file_size = 232
+	#
+	# unit = "kilobytes"
+	assert file_size != 0
+	assert unit is not None
+	return file_size, unit
+
+
 
 
 def file_metadata_builder(filename, generation, derived_from, checksum=None, checksum_type=None):
 
 	instance = NonAVModel.Instantiation(os.path.basename(filename))
-	instance.report_errors = errors_report.WARNING #todo remove this line when done building
+	# instance.report_errors = errors_report.WARNING #todo remove this line when done building
 
 	instance.generation = generation
 	instance.derivedFrom = derived_from
@@ -33,11 +53,11 @@ def file_metadata_builder(filename, generation, derived_from, checksum=None, che
 		instance.checksum = checksum
 		instance.checksumType = checksum_type
 	else:
-		instance.checksum = create_MD5(filename)
-		instance.checksumType = "MD5"
+		instance.checksum = create_md5(filename)
+		instance.checksumType = "md5"
 
 	file_size, file_size_unit = get_human_filesize(filename)
-	instance.fileSize = file_size
+	instance.fileSize = str("%.2f" % file_size)
 	instance.fileSizeUnit = file_size_unit
 
 	instance.technical = imageSpecsExtractor.image_specs_extractor(filename).xml
@@ -72,11 +92,40 @@ def test(source_folder):
 					continue
 				test_file = os.path.join(root, file)
 				print(test_file)
-				print(file_metadata_builder(test_file, generation="Original", derived_from="Physical"))
+				print(file_metadata_builder(test_file, generation="Unknown", derived_from="Unknown"))
 
 def main():
 	print("hello")
-	test("/Volumes")
+	if len(sys.argv) < 2:
+		sys.stderr.write("Needs at least one argument.\n")
+		exit(-1)
+
+	if len(sys.argv) == 3:
+		if sys.argv[1] == "-t":
+			if not os.path.isdir(sys.argv[2]):
+				sys.stderr.write("Not a directory.\n")
+				quit(-1)
+			if not os.path.exists(sys.argv[2]):
+				sys.stderr.write("Directory does not exist.\n")
+				quit(-1)
+
+			print("Running test mode")
+			test(sys.argv[2])
+			print("Test finished.")
+			exit(0)
+		else:
+			sys.stderr.write("Not a valid option.\n")
+			quit(-1)
+	if not os.path.isfile(sys.argv[1]):
+		sys.stderr.write("Not a file.\n")
+		exit(-1)
+
+	if not os.path.exists(sys.argv[1]):
+		sys.stderr.write("File doesn't exists.\n")
+		exit(-1)
+	else:
+		print("\nInstantiation and Technical metadata for: " + os.path.basename(sys.argv[1]) + "\n")
+		print(file_metadata_builder(sys.argv[1], generation="Unknown", derived_from="Unknown"))
 
 
 
