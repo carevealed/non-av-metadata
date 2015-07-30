@@ -9,7 +9,7 @@ import re
 __author__ = 'California Audio Visual Preservation Project'
 
 from PIL import Image, ExifTags
-from NonAVModel import Technical, CompressionModes
+from NonAVModel.Technical import Technical, CompressionModes
 
 
 class MediaInfoException(Exception):

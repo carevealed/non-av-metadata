@@ -1,9 +1,9 @@
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
-import NonAVModel.AssetPart
-from NonAVModel import Element
-import NonAVModel.Instantiation
-from NonAVModel import CAPS_node
+# import NonAVModel.AssetPart
+from .Element import Element
+# import NonAVModel.Instantiation
+from .CAPS_node import CAPS_node
 
 class Instantiations(CAPS_node):
     def __init__(self):

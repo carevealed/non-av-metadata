@@ -6,9 +6,9 @@ import sys
 from os.path import getsize
 
 
-import imageSpecsExtractor
-import NonAVModel.Instantiation
-from NonAVModel import errors_report
+from imageSpecsExtractor import image_specs_extractor
+from NonAVModel.Instantiation import Instantiation
+# from .NonAVModel import errors_report
 
 
 def create_md5(file_name):
@@ -41,9 +41,9 @@ def get_human_filesize(filename):
 
 
 
-def file_metadata_builder(filename, generation, derived_from, checksum=None, checksum_type=None):
+def file_metadata_builder(filename, generation, derived_from, checksum=None, checksum_type=None, processing_notes = None):
 
-	instance = NonAVModel.Instantiation(os.path.basename(filename))
+	instance = Instantiation(os.path.basename(filename))
 	# instance.report_errors = errors_report.WARNING #todo remove this line when done building
 
 	instance.generation = generation
@@ -60,7 +60,11 @@ def file_metadata_builder(filename, generation, derived_from, checksum=None, che
 	instance.fileSize = str("%.2f" % file_size)
 	instance.fileSizeUnit = file_size_unit
 
-	instance.technical = imageSpecsExtractor.image_specs_extractor(filename).xml
+	technical = image_specs_extractor(filename)
+	technical.additionalTechnicalNotes = processing_notes
+	instance.technical = technical.xml
+
+	instance.technical = image_specs_extractor(filename).xml
 
 	report = instance.check_required_data()
 	if report.valid:

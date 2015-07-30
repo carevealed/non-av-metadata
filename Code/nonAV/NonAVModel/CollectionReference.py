@@ -1,13 +1,13 @@
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
-import NonAVModel.DescriptionDocument
-from NonAVModel import CAPS_node
-from  NonAVModel import Element
+from .DescriptionDocument import DescriptionDocument
+from .CAPS_node import CAPS_node
+from .Element import Element
 
 class CollectionReference(CAPS_node):
     def __init__(self, collectionSource=None, projectSource=None):
         super(CollectionReference, self).__init__()
-        self._descriptionDocument = NonAVModel.DescriptionDocument()
+        self._descriptionDocument = DescriptionDocument()
         self._collectionSource = None
         self._projectSource = None
 

@@ -1,9 +1,9 @@
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
-from NonAVModel import Element
-from collections import OrderedDict
-import NonAVModel.DescriptionDocument
-from NonAVModel import CAPS_node
+from .Element import Element
+# from collections import OrderedDict
+# import NonAVModel.DescriptionDocument
+from .CAPS_node import CAPS_node
 
 
 class DublinCore(CAPS_node):

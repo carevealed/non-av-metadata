@@ -1,11 +1,11 @@
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
 from enum import Enum
-from NonAVModel import Element
-import NonAVModel.Instantiation
+from .Element import Element
+# import NonAVModel.Instantiation
 import re
-from NonAVModel.CAPS_node import CAPS_node
-from NonAVModel import errors_report
+from .CAPS_node import CAPS_node
+from .CAPS_node import errors_report
 
 
 class CompressionModes(Enum):

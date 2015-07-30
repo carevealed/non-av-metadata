@@ -1,9 +1,9 @@
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
-from NonAVModel import Element
-import NonAVModel.AssetPart
+from .Element import Element
+# import NonAVModel.AssetPart
 # from Model import DescriptionDocument
-from NonAVModel import CAPS_node
+from .CAPS_node import CAPS_node
 
 class Assets(CAPS_node):
     def __init__(self, object_id=None, project_id=None, physical_location=None, color=None, total_parts=None, additional_description=None):

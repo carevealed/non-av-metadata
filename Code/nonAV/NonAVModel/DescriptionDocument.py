@@ -1,10 +1,10 @@
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
-from NonAVModel import DublinCore
-import NonAVModel.Assets
-from NonAVModel import CollectionReference
-from NonAVModel import Element
-from NonAVModel import CAPS_node
+from . import DublinCore
+# import NonAVModel.Assets
+# from NonAVModel.CollectionReference import CollectionReference
+from .Element import Element
+from .CAPS_node import CAPS_node
 
 class DescriptionDocument(CAPS_node):
     def __init__(self):

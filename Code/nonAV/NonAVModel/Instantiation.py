@@ -1,10 +1,10 @@
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
-from NonAVModel import Element
-from NonAVModel import Technical
-from NonAVModel import Instantiations
-from NonAVModel import CAPS_node
-from NonAVModel import errors_report
+from .Element import Element
+from .Technical import Technical
+from .Instantiations import Instantiations
+from .CAPS_node import CAPS_node
+from . import errors_report
 
 
 class Instantiation(CAPS_node):
