@@ -7,24 +7,24 @@
       <xs:sequence>
         <xs:element name="DescriptionDocument">
           <xs:annotation>
-            <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">The DescriptionDocument element allows grouping of the Dublin Core metadata and the metadata about the assets being represented.</xs:documentation>
+            <xs:documentation source="http://cavpp.github.io/non-av-metadata" xml:lang="en">The DescriptionDocument element allows grouping of the Dublin Core metadata and the metadata about the assets being represented.</xs:documentation>
           </xs:annotation>
           <xs:complexType>
             <xs:sequence>
               <xs:element name="DublinCore">
                 <xs:annotation>
-                  <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">The DublinCore element wraps the elements found in the generic Dublin Core scheme and represents the content of the object.</xs:documentation>
+                  <xs:documentation source="http://cavpp.github.io/non-av-metadata" xml:lang="en">The DublinCore element wraps the elements found in the generic Dublin Core scheme and represents the content of the object.</xs:documentation>
                 </xs:annotation>
                 <xs:complexType>
                   <xs:sequence>
                     <xs:element name="title" maxOccurs="unbounded" type="xs:string">
                       <xs:annotation>
-                        <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Main or supplied title of the object.</xs:documentation>
+                        <xs:documentation source="http://cavpp.github.io/non-av-metadata" xml:lang="en">Main or supplied title of the object.</xs:documentation>
                       </xs:annotation>
                     </xs:element>
                     <xs:element maxOccurs="unbounded" minOccurs="0" name="creator" type="xs:string">
                       <xs:annotation>
-                        <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Person(s) or organization(s) primarily responsible for creating an object. The creator may be considered an author and may be one or more people, a business, organization, group, project or service. 
+                        <xs:documentation source="http://cavpp.github.io/non-av-metadata" xml:lang="en">Person(s) or organization(s) primarily responsible for creating an object. The creator may be considered an author and may be one or more people, a business, organization, group, project or service. 
 
 Format: Last Name, First Name. 
 Please use controlled vocabulary if applicable.
@@ -36,7 +36,7 @@ Vocabulary: Library of Congress Name Authority File http://authorities.loc.gov/<
                     </xs:element>
                     <xs:element maxOccurs="unbounded" minOccurs="0" name="subject" type="xs:string">
                       <xs:annotation>
-                        <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Please use one subject per element.
+                        <xs:documentation source="http://cavpp.github.io/non-av-metadata" xml:lang="en">Please use one subject per element.
 Please use controlled vocabulary if applicable. 
 
 Vocabularies:
@@ -46,13 +46,13 @@ Library of Congress Name Authority File: http://id.loc.gov/authorities/names.htm
                     </xs:element>
                     <xs:element minOccurs="0" name="description" type="xs:string">
                       <xs:annotation>
-                        <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Description or content summary.</xs:documentation>
+                        <xs:documentation source="http://cavpp.github.io/non-av-metadata" xml:lang="en">Description or content summary.</xs:documentation>
                       </xs:annotation>
                     </xs:element>
                     <xs:element maxOccurs="unbounded" minOccurs="0" name="publisher"
                       type="xs:string">
                       <xs:annotation>
-                        <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Person(s) or organization(s) primarily responsible for distributing or making an object available to others. Publisher may be a person, a business, organization, group, project or service. 
+                        <xs:documentation source="http://cavpp.github.io/non-av-metadata" xml:lang="en">Person(s) or organization(s) primarily responsible for distributing or making an object available to others. Publisher may be a person, a business, organization, group, project or service. 
 
 Format: Last Name, First Name. 
 Please use one name per publisher element.
@@ -63,7 +63,7 @@ Vocabulary: Library of Congress Name Authority File http://authorities.loc.gov/<
                     <xs:element maxOccurs="unbounded" minOccurs="0" name="contributor"
                       type="xs:string">
                       <xs:annotation>
-                        <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Person(s) or organization(s) responsible for contributing to an object. 
+                        <xs:documentation source="http://cavpp.github.io/non-av-metadata" xml:lang="en">Person(s) or organization(s) responsible for contributing to an object. 
 
 Format: Last Name, First Name.
 Please use one name per contributor element.
@@ -75,7 +75,7 @@ Vocabulary: Library of Congress Name Authority File http://authorities.loc.gov/
                     </xs:element>
                     <xs:element maxOccurs="unbounded" minOccurs="0" name="date">
                       <xs:annotation>
-                        <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Date related. Qualified by type attribute. 
+                        <xs:documentation source="http://cavpp.github.io/non-av-metadata" xml:lang="en">Date related. Qualified by type attribute. 
 
 Format: YYYY-MM-DD, YYYY-MM, or YYYY
 
@@ -86,7 +86,7 @@ If unknown, enter "Unknown."</xs:documentation>
                           <xs:extension base="xs:string">
                             <xs:attribute default="created" name="type">
                               <xs:annotation>
-                                <xs:documentation source="California Preservation Service Metadata Guidelines">Type of date. For example: "created" or "published"</xs:documentation>
+                                <xs:documentation source="http://cavpp.github.io/non-av-metadata">Type of date. For example: "created" or "published"</xs:documentation>
                               </xs:annotation>
                             </xs:attribute>
                           </xs:extension>
@@ -95,21 +95,21 @@ If unknown, enter "Unknown."</xs:documentation>
                     </xs:element>
                     <xs:element minOccurs="1" name="type" type="xs:string">
                       <xs:annotation>
-                        <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">The nature or genre of the content of the object.
+                        <xs:documentation source="http://cavpp.github.io/non-av-metadata" xml:lang="en">The nature or genre of the content of the object.
 
 Please use controlled vocabulary: Text; Still Image.</xs:documentation>
                       </xs:annotation>
                     </xs:element>
                     <xs:element minOccurs="0" name="format" type="xs:string">
                       <xs:annotation>
-                        <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Please use controlled vocabulary: Book; Broadside (notice); Drawing (visual work); Engraving (print); Lithograph; Manuscript (document genre); Map (document); Newspaper; Photograph.
+                        <xs:documentation source="http://cavpp.github.io/non-av-metadata" xml:lang="en">Please use controlled vocabulary: Book; Broadside (notice); Drawing (visual work); Engraving (print); Lithograph; Manuscript (document genre); Map (document); Newspaper; Photograph.
 
 </xs:documentation>
                       </xs:annotation>
                     </xs:element>
                     <xs:element maxOccurs="unbounded" minOccurs="0" name="identifier">
                       <xs:annotation>
-                        <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">An unambiguous reference to the resource within the institution.
+                        <xs:documentation source="http://cavpp.github.io/non-av-metadata" xml:lang="en">An unambiguous reference to the resource within the institution.
 For example: Call number or barcode. 
 Qualified with the type attribute.</xs:documentation>
                       </xs:annotation>
@@ -118,7 +118,7 @@ Qualified with the type attribute.</xs:documentation>
                           <xs:extension base="xs:string">
                             <xs:attribute name="type">
                               <xs:annotation>
-                                <xs:documentation source="California Preservation Service Metadata Guidelines">The type of the indentifier. For example "call number" or "barcode"</xs:documentation>
+                                <xs:documentation source="http://cavpp.github.io/non-av-metadata">The type of the indentifier. For example "call number" or "barcode"</xs:documentation>
                               </xs:annotation>
                             </xs:attribute>
                           </xs:extension>
@@ -127,7 +127,7 @@ Qualified with the type attribute.</xs:documentation>
                     </xs:element>
                     <xs:element maxOccurs="unbounded" name="source">
                       <xs:annotation>
-                        <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Name of owning institution.</xs:documentation>
+                        <xs:documentation source="http://cavpp.github.io/non-av-metadata" xml:lang="en">Name of owning institution.</xs:documentation>
                       </xs:annotation>
                       <xs:complexType>
                         <xs:simpleContent>
@@ -146,19 +146,19 @@ Qualified with the type attribute.</xs:documentation>
                     </xs:element>
                     <xs:element maxOccurs="unbounded" minOccurs="0" name="language" type="xs:string">
                       <xs:annotation>
-                        <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">A language of the intellectual content of the object. If English, enter “eng.” Please use controlled vocabulary. 
+                        <xs:documentation source="http://cavpp.github.io/non-av-metadata" xml:lang="en">A language of the intellectual content of the object. If English, enter “eng.” Please use controlled vocabulary. 
 
 Vocabulary: ISO 639.2 Codes for Names of Languages http://www.loc.gov/standards/iso639-2/php/code_list.php</xs:documentation>
                       </xs:annotation>
                     </xs:element>
                     <xs:element maxOccurs="1" minOccurs="0" name="relation" type="xs:string">
                       <xs:annotation>
-                        <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">List related Title(s) or Identifier(s) if object shares an intellectual bond with another object or belongs in a series. </xs:documentation>
+                        <xs:documentation source="http://cavpp.github.io/non-av-metadata" xml:lang="en">List related Title(s) or Identifier(s) if object shares an intellectual bond with another object or belongs in a series. </xs:documentation>
                       </xs:annotation>
                     </xs:element>
-                    <xs:element maxOccurs="unbounded" minOccurs="1" name="coverage">
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="coverage">
                       <xs:annotation>
-                        <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Identifies a span of time or space that is expressed by the intellectual content of an object. 
+                        <xs:documentation source="http://cavpp.github.io/non-av-metadata" xml:lang="en">Identifies a span of time or space that is expressed by the intellectual content of an object. 
 
 Please use controlled vocabulary, if applicable. 
 
@@ -181,7 +181,7 @@ https://www.loc.gov/standards/datetime/pre-submission.html#datetime</xs:document
                     </xs:element>
                     <xs:element name="rights" type="xs:string">
                       <xs:annotation>
-                        <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Information about rights held in and over the object.
+                        <xs:documentation source="http://cavpp.github.io/non-av-metadata" xml:lang="en">Information about rights held in and over the object.
 
 Three boilerplate statements are supplied — amend the statements as needed:
 
@@ -204,30 +204,30 @@ For more information, see project permission guidelines.</xs:documentation>
               </xs:element>
               <xs:element name="Assets">
                 <xs:annotation>
-                  <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">The Assets element allows grouping of PREMIS-like and technical metadata about the record's physical object and object's digital surrogates.</xs:documentation>
+                  <xs:documentation source="http://cavpp.github.io/non-av-metadata" xml:lang="en">The Assets element allows grouping of PREMIS-like and technical metadata about the record's physical object and object's digital surrogates.</xs:documentation>
                 </xs:annotation>
                 <xs:complexType>
                   <xs:sequence>
                     <xs:element name="objectID" type="xs:string">
                       <xs:annotation>
-                        <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Unique object identifier to be supplied by the California Preservation Service. </xs:documentation>
+                        <xs:documentation source="http://cavpp.github.io/non-av-metadata" xml:lang="en">Unique object identifier to be supplied by the California Preservation Service. </xs:documentation>
                       </xs:annotation>
                     </xs:element>
                     <xs:element name="projectID" type="xs:string">
                       <xs:annotation>
-                        <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Project identifier be supplied by the California Preservation Service.</xs:documentation>
+                        <xs:documentation source="http://cavpp.github.io/non-av-metadata" xml:lang="en">Project identifier be supplied by the California Preservation Service.</xs:documentation>
                       </xs:annotation>
                     </xs:element>
                     <xs:element name="physicalLocation" type="xs:string">
                       <xs:annotation>
-                        <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Name of owning institution.</xs:documentation>
+                        <xs:documentation source="http://cavpp.github.io/non-av-metadata" xml:lang="en">Name of owning institution.</xs:documentation>
                       </xs:annotation>
                     </xs:element>
                     <xs:choice>
                       <xs:sequence>
                         <xs:element name="dimensionsHeight" minOccurs="1">
                           <xs:annotation>
-                            <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">The DimensionsHeight element describes the height of the physical object which is qualified by a unit attribute. 
+                            <xs:documentation source="http://cavpp.github.io/non-av-metadata" xml:lang="en">The DimensionsHeight element describes the height of the physical object which is qualified by a unit attribute. 
 
 If this is known, please include both height and width information.</xs:documentation>
                           </xs:annotation>
@@ -236,7 +236,7 @@ If this is known, please include both height and width information.</xs:document
                               <xs:extension base="xs:decimal">
                                 <xs:attribute name="unit" type="xs:string" use="required">
                                   <xs:annotation>
-                                    <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Represent the unit used to measure the physical item. Should be a physical unit and words spelled out instead of using abbreviations. 
+                                    <xs:documentation source="http://cavpp.github.io/non-av-metadata" xml:lang="en">Represent the unit used to measure the physical item. Should be a physical unit and words spelled out instead of using abbreviations. 
 
 For example: inches and centimeters.</xs:documentation>
                                   </xs:annotation>
@@ -247,7 +247,7 @@ For example: inches and centimeters.</xs:documentation>
                         </xs:element>
                         <xs:element name="dimensionsWidth" minOccurs="1">
                           <xs:annotation>
-                            <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">The DimensionsWidth element describes the width of the physical object which is qualified by a unit attribute.
+                            <xs:documentation source="http://cavpp.github.io/non-av-metadata" xml:lang="en">The DimensionsWidth element describes the width of the physical object which is qualified by a unit attribute.
 
 If this is known, please include both height and width information.</xs:documentation>
                           </xs:annotation>
@@ -256,7 +256,7 @@ If this is known, please include both height and width information.</xs:document
                               <xs:extension base="xs:decimal">
                                 <xs:attribute name="unit" type="xs:string" use="required">
                                   <xs:annotation>
-                                    <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Represent the unit used to measure the physical item. Should be a physical unit and words spelled out instead of using abbreviations. 
+                                    <xs:documentation source="http://cavpp.github.io/non-av-metadata" xml:lang="en">Represent the unit used to measure the physical item. Should be a physical unit and words spelled out instead of using abbreviations. 
 
 For example: inches and centimeters.</xs:documentation>
                                   </xs:annotation>
@@ -270,28 +270,28 @@ For example: inches and centimeters.</xs:documentation>
                     </xs:choice>
                     <xs:element name="color" type="xs:string">
                       <xs:annotation>
-                        <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">The color element describes whether the physical object made up of content that is black and white, color, or a mixture.</xs:documentation>
+                        <xs:documentation source="http://cavpp.github.io/non-av-metadata" xml:lang="en">The color element describes whether the physical object made up of content that is black and white, color, or a mixture.</xs:documentation>
                       </xs:annotation>
                     </xs:element>
                     <xs:element name="hasParts" type="xs:string">
                       <xs:annotation>
-                        <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Describes the object's total number of parts. For example, "1 page" or "3 pages of 3."</xs:documentation>
+                        <xs:documentation source="http://cavpp.github.io/non-av-metadata" xml:lang="en">Describes the object's total number of parts. For example, "1 page" or "3 pages of 3."</xs:documentation>
                       </xs:annotation>
                     </xs:element>
                     <xs:element name="additionalDescription" type="xs:string">
                       <xs:annotation>
-                        <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Additional descriptive notes about the object that do not fit into elements above.</xs:documentation>
+                        <xs:documentation source="http://cavpp.github.io/non-av-metadata" xml:lang="en">Additional descriptive notes about the object that do not fit into elements above.</xs:documentation>
                       </xs:annotation>
                     </xs:element>
                     <xs:element maxOccurs="1" name="AssetPart">
                       <xs:annotation>
-                        <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">The AssetPart element allows for grouping of the various parts in a record, allowing the representation of complex object.</xs:documentation>
+                        <xs:documentation source="http://cavpp.github.io/non-av-metadata" xml:lang="en">The AssetPart element allows for grouping of the various parts in a record, allowing the representation of complex object.</xs:documentation>
                       </xs:annotation>
                       <xs:complexType>
                         <xs:sequence>
                           <xs:element name="Instantiations" maxOccurs="unbounded">
                             <xs:annotation>
-                              <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">The Instantiations element allows for the grouping of all the instantations for a given asset.</xs:documentation>
+                              <xs:documentation source="http://cavpp.github.io/non-av-metadata" xml:lang="en">The Instantiations element allows for the grouping of all the instantations for a given asset.</xs:documentation>
                             </xs:annotation>
                             <xs:complexType>
                               <xs:sequence>
@@ -300,7 +300,7 @@ For example: inches and centimeters.</xs:documentation>
                                     <xs:sequence>
                                       <xs:element name="fileName">
                                         <xs:annotation>
-                                          <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Name of the digital file with the file extension.</xs:documentation>
+                                          <xs:documentation source="http://cavpp.github.io/non-av-metadata" xml:lang="en">Name of the digital file with the file extension.</xs:documentation>
                                         </xs:annotation>
                                         <xs:complexType>
                                           <xs:simpleContent>
@@ -310,14 +310,14 @@ For example: inches and centimeters.</xs:documentation>
                                       </xs:element>
                                       <xs:element name="fileSize">
                                         <xs:annotation>
-                                          <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">The size of the digital file as a decimal or a whole number only. Qualified by a file size unit attribute.</xs:documentation>
+                                          <xs:documentation source="http://cavpp.github.io/non-av-metadata" xml:lang="en">The size of the digital file as a decimal or a whole number only. Qualified by a file size unit attribute.</xs:documentation>
                                         </xs:annotation>
                                         <xs:complexType>
                                           <xs:simpleContent>
                                             <xs:extension base="xs:decimal">
                                               <xs:attribute name="unit">
                                                 <xs:annotation>
-                                                  <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Unit should contain the full name and not an abbreviation. For example: megabytes instead of MB.</xs:documentation>
+                                                  <xs:documentation source="http://cavpp.github.io/non-av-metadata" xml:lang="en">Unit should contain the full name and not an abbreviation. For example: megabytes instead of MB.</xs:documentation>
                                                 </xs:annotation>
                                               </xs:attribute>
                                             </xs:extension>
@@ -326,7 +326,7 @@ For example: inches and centimeters.</xs:documentation>
                                       </xs:element>
                                       <xs:element name="checksum">
                                         <xs:annotation>
-                                          <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Contains the hash value of a checksum verification algorithm. Qualified by a type attribute.</xs:documentation>
+                                          <xs:documentation source="http://cavpp.github.io/non-av-metadata" xml:lang="en">Contains the hash value of a checksum verification algorithm. Qualified by a type attribute.</xs:documentation>
                                         </xs:annotation>
                                         <xs:complexType>
                                           <xs:simpleContent>
@@ -344,7 +344,7 @@ For example: MD5</xs:documentation>
                                       </xs:element>
                                       <xs:element name="derivedFrom" type="xs:string">
                                         <xs:annotation>
-                                          <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Refers to the source of instantiation. This will be designated by Physical Object for preservation master(s). For the access file(s), this will specify the file name it was derivated from.</xs:documentation>
+                                          <xs:documentation source="http://cavpp.github.io/non-av-metadata" xml:lang="en">Refers to the source of instantiation. This will be designated by Physical Object for preservation master(s). For the access file(s), this will specify the file name it was derivated from.</xs:documentation>
                                         </xs:annotation>
                                       </xs:element>
                                       <xs:element name="Technical">
@@ -352,19 +352,19 @@ For example: MD5</xs:documentation>
                                           <xs:sequence>
                                             <xs:element name="fileFormat" type="xs:string">
                                               <xs:annotation>
-                                                <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Specifies the MIME type of the file.</xs:documentation>
+                                                <xs:documentation source="http://cavpp.github.io/non-av-metadata" xml:lang="en">Specifies the MIME type of the file.</xs:documentation>
                                               </xs:annotation>
                                             </xs:element>
                                             <xs:element name="imageFormat" type="xs:string">
                                               <xs:annotation>
-                                                <xs:documentation source="California Preservation Service Metadata Guidelines">Specifies the encoding of the digital file.
+                                                <xs:documentation source="http://cavpp.github.io/non-av-metadata">Specifies the encoding of the digital file.
 
 For example: JPEG2000</xs:documentation>
                                               </xs:annotation>
                                             </xs:element>
                                             <xs:element name="resolutionWidth">
                                               <xs:annotation>
-                                                <xs:documentation source="California Preservation Service Metadata Guidelines">Specifies the x dimensions of the digital file. Qualified with a unit.</xs:documentation>
+                                                <xs:documentation source="http://cavpp.github.io/non-av-metadata">Specifies the x dimensions of the digital file. Qualified with a unit.</xs:documentation>
                                               </xs:annotation>
                                               <xs:complexType>
                                                 <xs:simpleContent>
@@ -372,7 +372,7 @@ For example: JPEG2000</xs:documentation>
                                                   <xs:attribute name="unit" use="required"
                                                   type="xs:string">
                                                   <xs:annotation>
-                                                  <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Almost always pixels.</xs:documentation>
+                                                  <xs:documentation source="http://cavpp.github.io/non-av-metadata" xml:lang="en">Almost always pixels.</xs:documentation>
                                                   </xs:annotation>
                                                   </xs:attribute>
                                                   </xs:extension>
@@ -381,7 +381,7 @@ For example: JPEG2000</xs:documentation>
                                             </xs:element>
                                             <xs:element name="resolutionHeight">
                                               <xs:annotation>
-                                                <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Specifies the y dimensions of the digital file. Qualified with a unit.   </xs:documentation>
+                                                <xs:documentation source="http://cavpp.github.io/non-av-metadata" xml:lang="en">Specifies the y dimensions of the digital file. Qualified with a unit.   </xs:documentation>
                                               </xs:annotation>
                                               <xs:complexType>
                                                 <xs:simpleContent>
@@ -389,7 +389,7 @@ For example: JPEG2000</xs:documentation>
                                                   <xs:attribute name="unit" use="required"
                                                   type="xs:string">
                                                   <xs:annotation>
-                                                  <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Almost always pixels.</xs:documentation>
+                                                  <xs:documentation source="http://cavpp.github.io/non-av-metadata" xml:lang="en">Almost always pixels.</xs:documentation>
                                                   </xs:annotation>
                                                   </xs:attribute>
                                                   </xs:extension>
@@ -398,7 +398,7 @@ For example: JPEG2000</xs:documentation>
                                             </xs:element>
                                             <xs:element minOccurs="1" name="colorSpace">
                                               <xs:annotation>
-                                                <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Specifies the type of color space used by the digital file.
+                                                <xs:documentation source="http://cavpp.github.io/non-av-metadata" xml:lang="en">Specifies the type of color space used by the digital file.
 
 For example: YUV</xs:documentation>
                                               </xs:annotation>
@@ -408,7 +408,7 @@ For example: YUV</xs:documentation>
                                             </xs:element>
                                             <xs:element minOccurs="0" name="chromaSubsampling">
                                               <xs:annotation>
-                                                <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Specifies the Chroma Subsampling as a ratio in the format integer:integer:integer. For example 4:2:2.
+                                                <xs:documentation source="http://cavpp.github.io/non-av-metadata" xml:lang="en">Specifies the Chroma Subsampling as a ratio in the format integer:integer:integer. For example 4:2:2.
 
 In the absence of subsampling, the value of this element is 4:4:4. 
 </xs:documentation>
@@ -421,7 +421,7 @@ In the absence of subsampling, the value of this element is 4:4:4.
                                             </xs:element>
                                             <xs:element name="colorDepth">
                                               <xs:annotation>
-                                                <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">The bit depth per channel. Qualified with a unit.</xs:documentation>
+                                                <xs:documentation source="http://cavpp.github.io/non-av-metadata" xml:lang="en">The bit depth per channel. Qualified with a unit.</xs:documentation>
                                               </xs:annotation>
                                               <xs:complexType>
                                                 <xs:simpleContent>
@@ -429,7 +429,7 @@ In the absence of subsampling, the value of this element is 4:4:4.
                                                   <xs:attribute name="unit" type="xs:string"
                                                   use="required">
                                                   <xs:annotation>
-                                                  <xs:documentation source="California Preservation Service Metadata Guidelines">Almost always bits.</xs:documentation>
+                                                  <xs:documentation source="http://cavpp.github.io/non-av-metadata">Almost always bits.</xs:documentation>
                                                   </xs:annotation>
                                                   </xs:attribute>
                                                   </xs:extension>
@@ -438,7 +438,7 @@ In the absence of subsampling, the value of this element is 4:4:4.
                                             </xs:element>
                                             <xs:element name="compressionMode">
                                               <xs:annotation>
-                                                <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Designates the type of compression. 
+                                                <xs:documentation source="http://cavpp.github.io/non-av-metadata" xml:lang="en">Designates the type of compression. 
 
 Please use only Lossless, Lossy, Uncompressed, or Unknown.</xs:documentation>
                                               </xs:annotation>
@@ -454,7 +454,7 @@ Please use only Lossless, Lossy, Uncompressed, or Unknown.</xs:documentation>
                                             <xs:element minOccurs="0"
                                               name="additionalTechnicalNotes" type="xs:string">
                                               <xs:annotation>
-                                                <xs:documentation source="California Preservation Service Metadata Guidelines">Additional techincal notes about the file that do not fit into elements above.</xs:documentation>
+                                                <xs:documentation source="http://cavpp.github.io/non-av-metadata">Additional techincal notes about the file that do not fit into elements above.</xs:documentation>
                                               </xs:annotation>
                                             </xs:element>
                                           </xs:sequence>
@@ -463,7 +463,7 @@ Please use only Lossless, Lossy, Uncompressed, or Unknown.</xs:documentation>
                                     </xs:sequence>
                                     <xs:attribute name="generation" type="xs:string" use="required">
                                       <xs:annotation>
-                                        <xs:documentation source="California Preservation Service Metadata Guidelines" xml:lang="en">Represents the generation and use classification of the file. 
+                                        <xs:documentation source="http://cavpp.github.io/non-av-metadata" xml:lang="en">Represents the generation and use classification of the file. 
 The most common values used will be Preservation and Access.</xs:documentation>
                                       </xs:annotation>
                                     </xs:attribute>

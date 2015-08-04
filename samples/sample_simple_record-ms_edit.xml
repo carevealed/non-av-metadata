@@ -34,7 +34,7 @@
                     <Instantiation generation="Preservation">
                         <fileName>c_00001_pres.tif</fileName>
                         <fileSize unit="megabytes">34.5</fileSize>
-                        <checksum type="MD5"> 703b7fee0c8fbf851c856c65439a3973 </checksum>
+                        <checksum type="md5"> 703b7fee0c8fbf851c856c65439a3973 </checksum>
                         <derivedFrom>Physical Object</derivedFrom>
                         <Technical>
                             <fileFormat>TIFF</fileFormat>
@@ -51,7 +51,7 @@
                     <Instantiation generation="Access">
                         <fileName>c_00001_access.jpg</fileName>
                         <fileSize unit="kilobytes">164.5</fileSize>
-                        <checksum type="MD5"> 703b7fee0c8fbf851c856c65439a3973</checksum>
+                        <checksum type="md5"> 703b7fee0c8fbf851c856c65439a3973</checksum>
                         <derivedFrom>c000001_pres.tif</derivedFrom>
                         <Technical>
                             <fileFormat>image/jpeg</fileFormat>
